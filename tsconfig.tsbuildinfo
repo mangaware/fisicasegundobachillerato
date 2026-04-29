@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/mathformula.tsx","./src/components/mockexamview.tsx","./src/data/exercisesheets.ts","./src/data/formulasheets.ts","./src/data/studyplan.ts","./src/data/topicsheets.ts"],"version":"5.9.3"}

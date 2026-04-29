@@ -1,0 +1,1159 @@
+===== PAGINA 1 =====
+FÍSICA 2º BACHILLERATO (E.B.A.U.)                                                                                                         LUCAS C. aka LUVIC05 
+DOSSIER DE FÓRMULAS Y CUESTIONES TEÓRICAS - FÍSICA 2º BACHILLERATO (EBAU) 
+LEYENDA:     =  EJ. DE EBAU      = EXPLICACIONES/ACLARACIONES (NO APARECERÁN COMO TEORÍA, PERO SI EN LOS EJS. APLICADOS) 
+TEMA 2  +  TEMA 3  – ONDAS Y SONIDO  
+FÓRMULAS 
+𝑦 (𝑥,𝑡)=𝐴· sin(𝜔𝑡±𝑘𝑥+𝜑𝑜)  (𝑚) 
+𝑣𝑣𝑖𝑏𝑟𝑎𝑐𝑖ó𝑛 (𝑥,𝑡)=𝐴·𝜔·cos(𝜔𝑡±𝑘𝑥+𝜑𝑜)  (𝑚/𝑠) 
+𝜔=2𝜋
+𝑇 (𝑟𝑎𝑑/𝑠)   𝑘=2𝜋
+𝜆  (𝑟𝑎𝑑/𝑚 𝑜 𝑚−1) 
+∆𝑡′=∆𝑥
+𝑣𝑓
+  (𝑒𝑐.  𝑝𝑎𝑟𝑎 𝑐𝑜𝑚𝑝𝑟𝑜𝑏𝑎𝑟 𝑠𝑖 𝑙𝑙𝑒𝑔𝑎 𝑙𝑎 𝐸𝑛𝑒𝑟𝑔í𝑎) 
+Δ𝜙=|𝜙2−𝜙1|  {𝜙1=𝜔·𝑡𝑜−𝑘·𝑥             
+𝜙2=𝜔·𝑡𝑜−𝑘·(𝑥−𝑥′)} 
+𝑇=1
+𝑓 (𝑠)    𝑓=1
+𝑇 (𝐻𝑧 𝑜 𝑠−1)  ;  {𝑣𝑚á𝑥= ±𝐴𝜔 
+𝑎𝑚á𝑥= ±𝐴𝜔2 
+𝑣𝑓𝑎𝑠𝑒,   𝑝𝑟𝑜𝑝𝑎𝑔𝑎𝑐𝑖ó𝑛,   𝑜𝑛𝑑𝑎 = 𝜆
+𝑇 =𝜆·𝑓 (𝑚/𝑠) 
+𝜑𝑜=𝑓𝑎𝑠𝑒 𝑖𝑛𝑖𝑐𝑖𝑎𝑙   ;   ∆𝑥=𝑥′−𝑥 
+𝑠𝑖 𝑥  𝑦  𝑥′ 𝑒𝑛 𝑐𝑜𝑛𝑐.𝑑𝑒  𝑓𝑎𝑠𝑒:   
+𝑠𝑖 𝑥  𝑦  𝑥′ 𝑒𝑛 𝑜𝑝.𝑑𝑒 𝑓𝑎𝑠𝑒:   
+ 
+𝑦𝑃(𝑥,𝑥′,𝑡)=𝑦𝑜(𝑥,𝑡)+𝑦𝑜
+′(𝑥′,𝑡)=[𝐴·sin(𝜔𝑡−𝑥)]+[𝐴·sin(𝜔𝑡−𝑘𝑥′)]=2·𝐴·cos(𝑘·
+𝑥′−𝑥
+2  +
+𝛿
+2)·sin(𝜔𝑡−
+𝑘·(𝑥′+𝑥)
+2 +
+𝛿
+2)(𝑚) 
+𝐼𝑁𝑇𝐸𝑅𝐹𝐸𝑅𝐸𝑁𝐶𝐼𝐴 𝐶𝑂𝑁𝑆𝑇𝑅𝑈𝐶𝑇𝐼𝑉𝐴:  cos(𝑘·
+∆𝑥
+2)=±1 → ∆𝑥
+2 =𝑛𝜋 → ∆𝑥=𝑛𝜆  ;  𝑛𝜖ℕ 
+𝐼𝑁𝑇𝐸𝑅𝐹𝐸𝑅𝐸𝑁𝐶𝐼𝐴 𝐷𝐸𝑆𝑇𝑅𝑈𝐶𝑇𝐼𝑉𝐴:  cos(𝑘·
+∆𝑥
+2)=0 → 2𝜋
+𝜆 ·∆𝑥
+2 =(2𝑛+1)·𝜋
+2 → ∆𝑥=(2𝑛+1)·𝜆
+2  ;  𝑛𝜖ℕ 
+CUESTIONES TEÓRICAS 
+ CLASIFICACIÓN DE LOS TIPOS DE ONDAS 
+Las ondas se pueden clasificar de tres formas diferentes: 
+Según la dimensión de propagación: 
+1) Ondas unidimensionales: las que se propagan en una sola dimensión. Por ejemplo: al contraer 
+y expandir un resorte. 
+2) Ondas bidimensionales: las que se propagan en dos dimensiones. Por ejemplo: las que se 
+forman al golpear la superficie del agua. 
+3) Ondas tridimensionales: las que se propagan en tres dimensiones. Por ejemplo: la luz. 
+Según la dirección de vibración: 
+ Ondas longitudinales: son aquellas cuyas partículas vibran en la misma dirección de la 
+propagación. 
+ Ondas transversales: las partículas vibran perpendicularmente a la dirección de la propagación. 
+Según el medio de propagación: 
+ Ondas materiales: requieren de un medio para propagarse. Bien sea que este medio se 
+encuentre en estado sólido, líquido o gaseoso. Por ejemplo el sonido. 
+ Ondas electromagnéticas: se propagan en el vacío. No requieren de un medio de propagación. 
+Por ejemplo, la luz. 
+ 
+ EFECTO DOPPLER 
+El efecto Doppler, en la variación aparente de la frecuencia de un movimiento ondulatorio (sonido), cuando 
+entre el emisor y el receptor haya un movimiento relativo. Un ejemplo típico, sería el sonido de la sirena 
+de una ambulancia cuando pasa cerca de nosotros o el enrojecimiento (redshift) de las galaxias al alejarse 
+debido a la expansión del universo. 
+La ecuación de la frecuencia del movimiento ondulatorio y la recibida por el receptor, viene dada por: 
+ 𝑓𝑜𝑏𝑠𝑒𝑟𝑣𝑎𝑑𝑎= 𝑓𝑒𝑚𝑖𝑡𝑖𝑑𝑎·
+𝑣𝑜𝑛𝑑𝑎±𝑣𝑅𝑒𝑐𝑒𝑝𝑡𝑜𝑟
+𝑣𝑜𝑛𝑑𝑎±𝑣𝐹𝑜𝑐𝑜
+  
+Δ𝜙=𝑛·(2𝜋)(𝑟𝑎𝑑) 
+Δ𝜙=(2𝑛+1)·𝜋  (𝑟𝑎𝑑)
+
+===== PAGINA 2 =====
+FÍSICA 2º BACHILLERATO (E.B.A.U.)                                                                                                         LUCAS C. aka LUVIC05 
+ TRANSPORTE DE ENERGÍA EN UNA ONDA 
+El movimiento de la onda es la propagación de un estado de perturbación (energía), y no la propagación 
+de la materia en sí misma. un corcho que flota en  el agua demuestra claramente lo anterior pues si es 
+alcanzado por una onda se moverá de arriba a abajo imitando el verdadero movimiento del agua, y no se 
+desplazará longitudinalmente junto con la perturbación. 
+ VELOCIDAD DE PROPAGACIÓN vs. VELOCIDAD DE OSCILACIÓN (O VIBRACIÓN) – JUNIO 2017 A C.II 
+La velocidad de propagación de una onda es la rapidez con la que avanza la perturbación por el medio 
+desde el foco emisor. Viene dada por: 𝑣 = 𝜆/𝑇 =𝜆·𝑓 (𝑚/𝑠) 
+Por otra parte, la velocidad de oscilación es la velocidad con la que vibra cada punto de la onda. No es 
+constante, puesto que corresponde a la de un MAS. 
+ ONDAS ESTACIONARIAS – JUNIO 2004 B C.II ; SEPTIEMBRE 2012 B C.II 
+Una onda estacionaria es aquella perturbación oscilatoria en la cual ciertos punt os denominados nodos 
+permanecen inmóviles. Esta, se forma por la interferencia de dos ondas de la misma   naturaleza con igual 
+amplitud, longitud de onda y frecuencia que avanzan en sentido opuesto a través de un medio. Un ejemplo, 
+se daría en los trastes (cuerdas) de una guitarra. 
+ ONDAS LONGITUDINALES vs. ONDAS TRANSVERSALES – JUNIO 2012 B C.II ; JUNIO 2001 B C.II 
+Las ondas transversales son aquellas en que las partículas oscilan con la velocidad de vibración 
+perpendicular a la velocidad de propagación. Este tipo de ondas por ejemplo pueden ser las que se 
+producen al agitar el extremo de una cuerda. 
+Las ondas longitudinales son aquellas en las que las partículas oscilan con la velocidad de vibración 
+paralela a la velocidad de propagación. el ejemplo más c aracterístico de onda longitudinal lo constituyen 
+las ondas sonoras. 
+ CARACTERÍSTICAS DE UNA ONDA TRANSVERSAL (CON EJEMPLO) – JULIO 2022 C.5 
+ 
+Sabiendo que  𝑦 (𝑥,𝑡)=𝐴· sin(2𝜋·𝑓·𝑡±𝑘𝑥+𝜑𝑜) , podemos razonar que: 
+ a = Amplitud (A): la máxima elongación que alcanzan los puntos que oscilan en la onda. (m) 
+ b = Frecuencia (f): número de oscilaciones que realiza un punto por segundo. (Hz o s-1) 
+ c = número de onda (k): periodicidad espacial de la onda y número de longitudes de onda 
+contenidas en 2 metros. (rad/m) 
+El signo menos nos está indicando que la onda se propaga en el sentido positivo del eje X. 
+ CARACTERÍSTICAS DE UNA ONDA EN DOS MEDIOS DIFERENTES (DOBLE PREGUNTA, CON EJEMPLOS) 
+ JUNIO 2018 A 
+Medio 1:   𝑇1=
+1
+𝑓1
+  ;  𝑘1=
+2𝜋
+𝜆1
+  ; 𝑣1=𝜆1·𝑓1 
+Medio 2:   𝑇2=
+1
+𝑓2
+  ;  𝑘2= 𝑘1·
+1
+2  ; 𝑣2=𝜆2·𝑓2 =2· 𝜆1·𝑓1=2·𝑣1  
+ JUNIO 2017 B 
+La frecuencia de una onda depende del foco emisor, por tanto al cambiar de medio permanecerá 
+constante. 
+𝑓1=𝑓2  →   𝑇1=𝑇2  →  𝑣2= 𝑣1
+2   →   𝜆2= 𝜆1
+2
+
+===== PAGINA 3 =====
+FÍSICA 2º BACHILLERATO (E.B.A.U.)                                                                                                         LUCAS C. aka LUVIC05 
+M.1 M.1 M.2 M.2 
+M.2 M.2 M.1 M.1 
+ LEYES DE SNELL 
+La reflexión de la luz es el cambio de dirección de los rayos de luz que ocurre en un mismo medio después 
+de incidir sobre la superficie de un medio distinto. Se rige por dos principios o leyes de Snell: 
+ El rayo incidente, el reflejado y la normal a la superficie en el punto de incidencia están en el mismo 
+plano. 
+ 
+𝑠𝑒𝑛 𝑖̂
+𝑠𝑒𝑛 𝑟̂=
+𝑣1
+𝑣2
+ 
+----------------- 
+----------------- 
+----------------- 
+----------------- 
+V1 > V2  V1 < V2 V2 > V1 V2 < V1 
+ 
+ PRINCIPIO DE HUYGENS 
+La propagación de una onda depende del movimiento de su frente de onda. Conforme avanza el frente de 
+onda, el movimiento ondulatorio se propaga alcanzando nuevos puntos del medio 
+El principio de Huygens nos permite explicar fenómenos ondulatorios relacionados con la propagación de 
+la onda, tales como la reflexión, la refracción y la difracción. 
+ Cada punto de un frente de ondas puede consid erarse un foco de ondas secundarias que se 
+propagan en la misma dirección de la perturbación. La velocidad de propagación y frecuencia de 
+estas ondas secundarias es la misma que la de la onda original. 
+ La superficie tangente (conocida como envolvente) a to das las ondas secundarias en un 
+determinado instante es el siguiente frente de ondas.  
+             
+ EL SONIDO 
+El sonido es una onda mecánica (que necesita de aire para propagarse ), longitudinal (la dirección de la 
+perturbación coincide con la propagación de la onda), que se produce por compresiones y refracciones del 
+aire. Consta de 3 cualidades: 
+ Tono: Propiedad que nos permite distinguir si el sonido es grave o agudo . Si aumenta la 
+frecuencia, el sonido es más agudo, por el contrario si disminuye es más grave . 
+ 
+ Timbre: La cualidad que permite distinguir dos notas iguales (con mismas f y A) emitidas por 
+diferentes instrumentos. 
+ 
+Ecuación del timbre: 𝑥′=𝑦(𝑡)=∑𝐴𝑛·sin(𝑤𝑛𝑡𝑛)+ 𝐵𝑛·cos (𝑤𝑛𝑡) 
+ 
+ Intensidad: propiedad que nos permite distinguir si el sonido es fuerte o débil . Está asociada 
+el parámetro amplitud de onda 
+ 
+- Intensidad Física:  𝐼 = 
+𝑃
+𝑆=
+𝑃
+4𝜋𝑟2 (𝑤
+𝑚2) 
+- Intensidad Sonora:  𝛽 (𝑑𝐵)= 10·log10 
+𝐼
+𝐼𝑜
+  (𝐼𝑜= 10−12  [
+𝑤
+𝑚2] )  
+𝛽𝑛 𝑓𝑢𝑒𝑛𝑡𝑒𝑠= 10·log10𝑛+ 𝛽1  (𝑑𝐵)  ;  𝐼2
+𝐼1
+=𝑟1
+2
+𝑟2
+2  
+ 
+𝑖̂ 
+𝑖̂ 
+𝑟̂ 
+𝑟̂ 
+𝑖̂ 𝑖̂ 𝑟̂ 
+𝑟̂
+
+===== PAGINA 4 =====
+FÍSICA 2º BACHILLERATO (E.B.A.U.)                                                                                                         LUCAS C. aka LUVIC05 
+ REFLEXIÓN, REFRACCIÓN Y DIFRACCIÓN 
+ Reflexión: Es el cambio de dirección del movimiento ondulatorio que ocurre en el mismo 
+medio que se propaga, después de incidir sobre la superficie de un medio distinto. 
+ Refracción: es el cambio de dirección del movimiento ondulatorio que ocurre tras pasar 
+éste de un medio a otro en el que se propaga con distinta velocidad. 
+ Difracción: es el fenómeno por el cual una onda que atraviesa un orificio de un tamaño 
+comparable a su longitud de onda, o bordea un obstáculo comparable a esta, Se propagan 
+todas las direcciones detrás del orificio. 
+TEMA 4 – GRAVITACIÓN 
+FÓRMULAS 
+u⃗ 1=cos(𝛼) 𝑖 +𝑠𝑒𝑛 (𝛼) 𝑗  
+𝐹 1,2=−𝐺·𝑀·𝑚
+𝑟1,22 ·u⃗ 1     ;   𝐹 𝐺 =𝑚·𝑎⃗ n   
+𝐺·𝑀·𝑚
+𝑟2  = 𝑚·𝑣2
+𝑟   →   −𝐺·𝑀
+4𝜋2 = 𝑟3
+𝑇2  
+𝑇2
+𝑟3= 
+4𝜋2
+𝐺·𝑀  (3ª 𝐿𝑒𝑦 𝑑𝑒 𝐾𝑒𝑝𝑙𝑒𝑟)  
+ 
+𝑔 𝑀 (𝑟)= 𝐹 𝑀,𝑚 (𝑟)
+𝑚  = −𝐺·𝑀
+𝑟2 · 𝑢⃗ 𝑀 (𝑁
+𝑘𝑔)   
+𝐸𝑝 𝑀,𝑚 (𝑟)=−𝐺·𝑀·𝑚
+𝑟  (𝐽𝑢𝑙𝑖𝑜𝑠) ; 𝐸𝑐= 𝐺·𝑀·𝑚
+2𝑟  (𝐽𝑢𝑙𝑖𝑜𝑠)  
+𝑉𝑀 (𝑟) = 
+𝐸𝑝 𝑀,𝑚 (𝑟)
+𝑚 →𝑉𝑀 (𝐴)=𝑊𝑐𝑎𝑚𝑝𝑜,   1𝑘𝑔
+𝐴  →  ∞  =−𝐺·𝑀
+𝑟  (𝐽𝑢𝑙𝑖𝑜𝑠
+𝑘𝑔 ) 
+𝑊𝑐𝑎𝑚𝑝𝑜,   𝑚
+𝐴  →  𝐵  =  𝑚·[𝑉𝑚(𝐴)−𝑉𝑚 (𝐵)]   
+{𝑊𝑐𝑎𝑚𝑝𝑜,   𝑚
+𝐴  →  𝐵 >0→𝑝𝑟𝑜𝑐𝑒𝑠𝑜 𝑒𝑠𝑝𝑜𝑛𝑡á𝑛𝑒𝑜 (𝑎𝑐𝑒𝑟𝑐𝑎𝑚𝑖𝑒𝑛𝑡𝑜)
+𝑊𝑐𝑎𝑚𝑝𝑜,   𝑚
+𝐴  →  𝐵 <0→𝑝𝑟𝑜𝑐𝑒𝑠𝑜 𝑓𝑜𝑟𝑧𝑎𝑑𝑜 (𝑎𝑙𝑒𝑗𝑎𝑚𝑖𝑒𝑛𝑡𝑜)          } 
+𝑀⃗⃗ 𝐹= |
+𝑖 𝑗 𝑘⃗ 
+𝑟𝑥 𝑟𝑦 𝑟𝑧
+𝐹𝑥 𝐹𝑦 𝐹𝑧
+| (𝑁·𝑚)= 𝑟  ×𝐹   ;  |𝑀⃗⃗ 𝐹|=  
+= |𝑟| ×|𝐹|·𝑠𝑒𝑛 (𝐹,𝑟̂)   ;  𝑖  × 𝑗 =𝑘⃗    
+ 
+ 𝐹𝐺=𝐺·𝑀·𝑚
+𝑟2    ;  (𝑐𝑎𝑚𝑏𝑖𝑜 𝑣𝑎𝑟𝑖𝑎𝑏𝑙𝑒)  𝑔𝑜·𝑅𝑃
+2=𝐺·𝑀 
+𝑎𝑛=𝑣2
+𝑟   ;   𝑣2=𝜔2·𝑟2=4𝜋2𝑟2
+𝑇2  
+𝑔  (ℎ)= 
+𝑔𝑜 
+(1+ℎ
+𝑅)
+2  (
+𝑚
+𝑠2) (𝑣𝑎𝑟𝑖𝑎𝑐𝑖ó𝑛 𝑑𝑒 𝑔 𝑐𝑜𝑛 ℎ)   
+𝑣𝑜𝑟𝑏= √ 𝐺·𝑀
+𝑟    ;   𝑣𝑒𝑠𝑐=  √ 2·𝐺·𝑀
+𝑟  
+𝐸𝑀=𝐸𝑝+𝐸𝑐  ;  𝐸𝑐=−𝐸𝑀=−𝐸𝑝
+2   (𝑒𝑛 ó𝑟𝑏𝑖𝑡𝑎𝑠 𝑐𝑖𝑟𝑐.) 
+𝐸𝑀=0 → 𝐺·𝑀·𝑚
+𝑟 +1
+2·𝑚·𝑣𝑒𝑠𝑐
+2=0→  […]  
+𝑊𝑐𝑎𝑚𝑝𝑜,   𝑚
+𝐴  →  𝐵 =𝐹 𝑀,𝑚· ∆𝑟 =𝐸𝑝 𝑀,𝑚 (𝐴)−𝐸𝑝 𝑀,𝑚 (𝐵)= −∆𝐸𝑝  
+𝑊𝑒𝑥𝑡,   𝑚
+01 → 02  =(𝐸𝑚)2− (𝐸𝑚)1 ↔ 𝑊𝑙𝑎𝑛𝑧.
+ = (𝐸𝑚)− (𝐸𝑝)    
+𝐿⃗ =𝑟  ×𝑚𝑣 = 𝑟  ×𝑝  ; 𝐿⃗ =𝑐𝑡𝑒.→∑𝑀⃗⃗ 𝑒𝑥𝑡= ∆𝐿⃗ 
+∆𝑡=0 
+ 𝐿⃗ = 𝑚·|
+𝑖 𝑗 𝑘⃗ 
+𝑟𝑥 𝑟𝑦 𝑟𝑧
+𝑣𝑥 𝑣𝑦 𝑣𝑧
+| (𝑘𝑔·𝑚2
+𝑠 )   ;    𝑝 =𝑚·𝑣   
+ 
+ 
+CUESTIONES TEÓRICAS 
+ LEY DE GRAVITACIÓN UNIVERSAL (LGU) 
+La Ley de Gravitación Universal nos dice cómo se ataren 2 cuerpos en cualquier lugar del universo. Esta 
+ley es universal porque sirve para cualesquiera 2 masas. La LGU es una fuerza, y como tal, posee 4 
+características: 
+1. El punto de aplicación se encuentra en el centro de las masas. 
+2. La dirección es la línea que une los 2 cuerpos. 
+3. El sentido es opuesto ya que la fuerza es atractiva. 
+4. El módulo (intensidad de  la fuerza) se define como 𝐹 1,2=−𝐺·
+𝑀·𝑚
+𝑟1,22·𝑢⃗ 1 (𝑁), donde G es la  
+constante de gravitación que vale 𝐺 = 6’67 ∙ 10−11 (N𝑚2/𝑘𝑔2) 
+Esta fuerza es central. Se dice que una fuerza es central si es paralela en todo momento al vector posición 
+𝑟 y si se dirige hacia un mismo punto O a lo largo de toda la trayectoria de la partícula. El módulo del vector 
+𝐹 depende de la distancia de la fuente del campo al cuerpo que lo sufre.
+
+===== PAGINA 5 =====
+FÍSICA 2º BACHILLERATO (E.B.A.U.)                                                                                                         LUCAS C. aka LUVIC05 
+Como consecuencia, toda fuerza central es conservativa. El trabajo necesario para trasladar una masa m 
+en las cercanías de M desde un punto ‘A’ a otro ‘B’ solo depende de dichos puntos y no de la trayectoria 
+seguida. 
+ LEYES DE KEPLER 
+Primera ley de Kepler (ley de las órbitas): La primera ley de Kepler establece que todos los planetas se 
+mueven alrededor del Sol describiendo una trayectoria elíptica. 
+Segunda ley de Kepler (ley de las áreas): La recta que une un planeta con el Sol (el vector posición de 
+un planeta respecto al sol) barre áreas iguales en tiempos iguales. El momento externo es nulo ya que la 
+fuerza gravitatoria es paralela al radio, por lo que la velocidad areolar es constante. 𝐿  es el momento 
+angular y 𝑝 el momento lineal. 
+𝐿⃗ =𝑟  ×𝑚𝑣 = 𝑟  ×𝑝  
+Tercera ley de Kepler (ley de los periodos):  también conocida como armónica, relaciona los periodos 
+de los planetas, es decir, lo que tardan en completar una vuelta alrededor del Sol, con sus radios medios. 
+𝑇2
+𝑟3 = 𝑘= 4𝜋2
+𝐺·𝑀    ;     𝑇2
+𝐴
+𝑟3𝐴
+=𝑇2
+𝐵
+𝑟3𝐵
+ 
+ FUERZA CONSERVATIVA Y EPOT – JULIO 2021 C.1 
+ 
+Una fuerza conservativa es aquella que en cuyo trabajo necesario para trasladar una masa ‘m’ desde un 
+punto ‘A’ a un punto ‘B’ en las cercanías de una masa ‘M’, no depende de la trayectoria seguida sino de 
+los puntos de inicio y final. 
+El trabajo que hay en este tipo de fuerza se define como la variación de energía potencial en negativo : 
+𝑊𝑐𝑎𝑚𝑝𝑜,   𝑚
+𝐴  →  𝐵 = −∆𝐸𝑝𝑜𝑡 (𝐽) 
+La energía potencial gravitatoria se define como : el cociente del producto negativo de la constante de 
+gravitación universal por la masa del objeto grande y la masa del objeto pequeño, entre la distancia de las 
+dos masas. 
+Por otra parte, el potencial gravitatorio se define como el cociente entre el eje entre la energía potencial 
+gravitatoria y la masa pequeña. 
+𝐸𝑝=−𝐺·𝑀·𝑚
+𝑟   ;  𝑉𝑀 (𝑟) = 
+𝐸𝑝 𝑀,𝑚 (𝑟)
+𝑚  
+ RELACIÓN ENTRE ‘m y ‘M’ – JULIO 2020 C.1 
+ 
+Las intensidades de cada fuerza son iguales, aunque se trata de 2 fuerzas diferentes aplicadas sobre 
+cuerpos diferentes: |𝐹⃗⃗ 𝑀,𝑚|=|𝐹⃗⃗  𝑚,𝑀| 
+Sin embargo, las aceleraciones son diferentes tanto en módulo  como en sentido . Pero, sí que 
+coinciden en la dirección: 
+𝑚:|𝐹⃗⃗ 𝑀,𝑚|=𝑚· 𝑎𝑚
+𝑀: |𝐹⃗⃗  𝑚,𝑀|=𝑀·𝑎𝑀
+       𝑎𝑚=
+𝑀
+𝑚·𝑎𝑀
+
+===== PAGINA 6 =====
+FÍSICA 2º BACHILLERATO (E.B.A.U.)                                                                                                         LUCAS C. aka LUVIC05 
+ ‘P’ CON CAMPO GRAVITATORIO NULO – SEPTIEMBRE 2003 B C.1 
+ 
+El campo gravitatorio, se anula en la mediatriz del segmento, 
+es decir, el punto P,  𝑔  (𝑃)= 0 
+Aparte de que es una magnitud escalar , el potencial 
+gravitatorio no se anula nunca, excepto en el infinito. 
+ 
+ 
+TEMA 5 – CAMPO ELÉCTRICO 
+FÓRMULAS 
+𝐹 𝑄1,𝑄2(𝑟)=𝑘·𝑄1·𝑄2
+𝑟2 ·𝑢⃗ 1  (𝑁)   ;  𝑘𝑜=9·109 (𝑁·𝑚2
+𝑐2 ) 
+𝑐𝑎𝑟𝑔𝑎 𝑒𝑙𝑒𝑚𝑒𝑛𝑡𝑎𝑙→ 𝑞𝑒≡𝑒−≡−1′6·10−19 (𝐶) 
+𝐸⃗ 𝑄 = 𝑘 · 𝑄
+𝑟2 ·𝑢⃗ 𝑟 (𝑁
+𝑐) ;  𝐹 𝑄,𝑞(𝑟)=𝑞·𝐸⃗ 𝑄  (𝑁)   
+𝑇𝑒𝑜𝑟𝑒𝑚𝑎 𝑑𝑒 𝐺𝑎𝑢𝑠𝑠:  Φ𝐸⃗ =𝐸⃗ ·𝑗 = |𝐸|·|𝑗 |·𝑐𝑜𝑠(𝐸⃗ ,𝑗 ̂) 
+Φ𝐸𝑙é𝑐𝑡𝑟𝑖𝑐𝑜=∫𝐸⃗ ·𝑑𝑠 = 
+∑𝑄𝑒𝑛𝑐𝑒𝑟𝑟𝑎𝑑𝑎
+εo
+  ;  Φ=4𝜋·𝑘𝑜·𝑞𝑒𝑛𝑐. 
+𝑒𝑙𝑒𝑐𝑡𝑟ó𝑛𝑣𝑜𝑙𝑡𝑖𝑜:  1 𝑒𝑉= 1′6·10−19 (𝐶)·(𝐽
+𝐶⁄ ) 
+ko= 1
+4𝜋𝜀𝑜
+   ;  u 1 = cos(𝛼) 𝑖 +𝑠𝑒𝑛 (𝛼) 𝑗  
+𝐹 total,q = ∑𝐹 𝑞𝑖,q 
+𝑛
+𝑖=1
+= 𝐹 𝑞1,q + 𝐹 𝑞2,q +[…]+ 𝐹 𝑞𝑛,q  
+𝑊𝑖𝑛𝑡,𝑞
+𝐴  →  𝐵 =  𝑞 (𝐶)·{[𝑉𝑄(𝐴)−𝑉𝑄 (𝐵)] (𝐽
+𝐶⁄ )}=(𝐽𝑢𝑙𝑖𝑜𝑠)     
+𝑉𝑄= 
+𝑘·𝑄
+𝑟   (𝐽𝑢𝑙𝑖𝑜𝑠
+𝑐 )  ;  𝐸⃗⃗ 𝑝𝑜𝑡𝑄,𝑞(𝑟)=𝑞·𝑉𝑄 (𝑟)  
+{𝑊𝑖𝑛𝑡
+ >0→𝑝𝑟𝑜𝑐𝑒𝑠𝑜 𝑒𝑠𝑝𝑜𝑛𝑡á𝑛𝑒𝑜
+𝑊𝑖𝑛𝑡
+ <0→𝑝𝑟𝑜𝑐𝑒𝑠𝑜 𝑓𝑜𝑟𝑧𝑎𝑑𝑜      } 
+𝑥 (𝑡)= 𝑥𝑜+𝑣𝑜∆𝑡+1
+2·𝑎 ∆𝑡  (𝑚) 
+𝑣 (𝑡)=𝑣𝑜+𝑎·∆𝑡  (𝑚/𝑠) 
+𝑎=𝑐𝑡𝑒=|𝑞||𝐸|
+𝑚  (𝑚/𝑠2)  
+ 
+|𝑞·∆𝑉|= 
+1
+2·𝑚·𝑣𝑓
+2 (𝐽𝑢𝑙𝑖𝑜𝑠) 
+|𝐸⃗ |= ∆𝑉
+∆𝑥 (𝑉/𝑚) 
+𝑣𝑓
+2−𝑣𝑜
+2=2 |𝑎| ∆𝑥  (𝑚2/𝑠2)
+ 
+ 
+ 
+Julios/Culombios = Voltios 
+P 
+ 
+P
+
+===== PAGINA 7 =====
+FÍSICA 2º BACHILLERATO (E.B.A.U.)                                                                                                         LUCAS C. aka LUVIC05 
+CUESTIONES TEÓRICAS 
+ LEY DE COLOUMB Y EL CAMPO ELÉCTRICO 
+La Ley de Coloumb es aquella que mide la intensidad de la 
+interacción entre cargas. “La fuerza de interacción entre 2 
+cargas es directamente proporcional al producto de ambas 
+cargas e inversamente proporcional al cuadrado de la distancia 
+que las separa” viene dada por la siguiente expresión: 
+𝐹 𝑄1,𝑄2(𝑟)=𝑘·𝑄1·𝑄2
+𝑟2 ·𝑢⃗ 1  (𝑁)   ;  𝑘𝑜=9·109 (𝑁·𝑚2
+𝑐2 ) 
+El campo eléctrico ‘EQ’ que genera una carga ‘Q’ en un punto ‘P’ del espacio es una magnitud vectorial 
+que depende exclusivamente de ‘Q’ y de la distancia a ‘P’. El campo ‘EQ’ es único para cada punto y se 
+manifiesta como una fuerza sobre otra carga ‘q’ que se sitúa en dicho punto. 
+El campo eléctrico ‘EQ’ queda representado por las siguientes magnitudes físicas: 
+1) Fuentes del campo: las fuentes del campo son las cargas 
+2) Líneas de fuerza:  son las trayectorias que una carga de +1C seguirá si se colocase en las 
+cercanías de ‘Q’ (imagen 1). 
+3) Vector intensidad de ‘EQ’:   𝐸⃗ 𝑄 = 
+𝑘 · 𝑄
+𝑟2 ·𝑢⃗ 𝑟 (
+𝑁
+𝑐)  
+4) Potencial eléctrico: (imagen 2) se define como el trabajo que realiza el campo cuando se traslada 
+a una carga de +1C desde el punto original hasta el infinito (donde las cargas se dan fuera del 
+campo de ‘Q’). Viene dado por la siguiente expresión: 𝑉𝑄 (𝐴)= 𝑊𝑖𝑛𝑡,   +1𝐶
+  𝐴  →  ∞  =
+𝑘·𝑄
+𝑟   (𝐽𝑢𝑙𝑖𝑜𝑠
+𝑐 ) 
+ (imagen 1)  (imagen 2) 
+ LEY DE GAUSS (O TEOREMA) 
+La ley de gauss dice que el flujo neto a través de cualquier superficie cerrada que rodea a una carga puntual 
+tiene un valor que depende de esa carga y es independiente de la forma de la superficie. 
+𝑇𝑒𝑜𝑟𝑒𝑚𝑎 𝑑𝑒 𝐺𝑎𝑢𝑠𝑠:  Φ𝐸⃗ =𝐸⃗ ·𝑗 = |𝐸|·|𝑗 |·𝑐𝑜𝑠(𝐸⃗ ,𝑗 ̂) 
+Φ𝐸𝑙é𝑐𝑡𝑟𝑖𝑐𝑜=∫𝐸⃗ ·𝑑𝑠 = 
+∑𝑄𝑒𝑛𝑐𝑒𝑟𝑟𝑎𝑑𝑎
+εo
+  ;  Φ=4𝜋·𝑘𝑜·𝑞𝑒𝑛𝑐. 
+La ley de gauss usa el concepto de flujo del campo eléctrico a través de una superficie cerrada, y concluye que 
+dicho flujo solo se ve afectado por la carga encerrada y las propiedades del medio, pero no por la forma de la 
+superficie (esto se debe a que las líneas de fuerza se extienden hasta el infinito, ya que son abiertas). 
+ 
+si   𝑞>0 → Φ= 𝐸⃗ ·𝑑𝑠 >0  (𝑠𝑎𝑙𝑖𝑒𝑛𝑡𝑒) 
+si   𝑞<0 → Φ= 𝐸⃗ ·𝑑𝑠 <0  (𝑒𝑛𝑡𝑟𝑎𝑛𝑡𝑒)
+
+===== PAGINA 8 =====
+FÍSICA 2º BACHILLERATO (E.B.A.U.)                                                                                                         LUCAS C. aka LUVIC05 
+TEMA 6 – CAMPO MAGNÉTICO 
+FÓRMULAS 
+𝐹 𝑚=𝑞·(𝑣 ×𝐵⃗ ) (𝑁)   ;   |𝐹𝑚|=|𝑞·𝑣·𝐵·𝑠𝑒𝑛 𝛼|   
+|𝐹𝑚|=𝑚𝑣2
+𝑅   →  𝑞𝑣𝐵=𝑚𝑣2
+𝑅   →   𝑅= 𝑚𝑣
+𝑞𝐵 
+𝐹 𝐿=𝑞·( 𝐸⃗ + 𝑣 ×𝐵⃗  ) (𝑁)   𝑜  𝐹 𝐿= 𝐹 𝑒+ 𝐹 𝑚 
+𝑃𝑎𝑟𝑎 𝑞𝑢𝑒 𝑞 𝑠𝑒𝑎 𝑢𝑛 𝑀𝑅𝑈 (𝑒𝑛 𝑒𝑙 𝑠𝑒𝑙𝑒𝑐𝑡𝑜𝑟 𝑑𝑒 𝑣𝑒𝑙𝑜𝑐𝑖𝑑𝑎𝑑𝑒𝑠)  
+→|𝐹 𝐿𝑜𝑟𝑒𝑛𝑡𝑧|=0 → |𝐹 𝑚|=|𝐹 𝑒| → |𝑞·𝐸|=|𝑞·𝑣·𝐵|  
+𝐵⃗ = 𝜇𝑜
+4𝜋·𝑞 · 𝑣  × 𝑢⃗ 𝑟
+𝑟2          𝐼 =𝐼𝑛𝑡𝑒𝑛𝑠𝑖𝑑𝑎𝑑 (𝐴𝑚𝑝𝑒𝑟𝑖𝑜𝑠)  
+𝐹 1,2= 𝐼2𝐿2⃗⃗⃗⃗⃗⃗⃗⃗ ×𝐵1⃗⃗⃗⃗     ;   𝐹 2,1= 𝐼1𝐿1⃗⃗⃗⃗⃗⃗⃗ ×𝐵2⃗⃗⃗⃗   (𝐿𝑒𝑦 𝑑𝑒 𝐿𝑎𝑝𝑙𝑎𝑐𝑒)  
+ 
+|𝐵|= |𝐹𝑚|
+|𝑞||𝑣||𝑠𝑒𝑛 𝜃|= 𝑁
+𝐶·𝑚·𝑠−1= 𝑁
+𝐴·𝑚=1 𝑇𝑒𝑠𝑙𝑎 
+𝑇= 2𝜋𝑅
+𝑣  = 2𝜋· 𝑚
+𝑞𝐵  (𝑠)   ;   𝑓= 𝑞𝐵
+2𝜋𝑚 (𝐻𝑧 𝑜 𝑠−1) 
+ 
+→  𝑣=|𝐸|
+|𝐵|  𝑖   (𝑚/𝑠) 
+𝐵⃗ ℎ𝑖𝑙𝑜 (𝑟)= 𝜇𝑜·𝐼
+2𝜋𝑟 𝑢⃗   (𝑇𝑒𝑠𝑙𝑎)   ;   𝜇𝑜=4𝜋·10−7 (𝑇·𝑚/𝐴) 
+ 
+|𝐹 1,2|
+𝐿2
+= 𝜇𝑜·𝐼1· 𝐼2
+2·𝜋·𝑑   (𝑁
+𝑚) = |𝐹 2,1|
+𝐿1
+  
+CUESTIONES TEÓRICAS 
+ LA FUERZA MAGNÉTICA 
+Cuando una partícula cargada ’q’ entra en una región donde exi ste un campo magnético 𝐵⃗  uniforme, el 
+campo ejerce una fuerza magnética 𝐹 𝑚 sobre la carga ‘q’ que la desvía de 
+su trayectoria original . dicha fuerza magnética tiene las siguientes 
+características: 
+1) La dirección de 𝐹 𝑚 es perpendicular a 𝑣  y a 𝐵⃗  
+2) El sentido de 𝐹 𝑚 viene dada por la regla de Maxwell 
+3) El módulo de 𝐹 𝑚, |𝐹 𝑚| es proporcional a: 
+3.1)  El valor de la carga |𝑞| 
+3.2)  El valor de la rapidez |𝑣  | 
+3.3)  El valor del campo magnético |𝐵⃗ | 
+3.4)  El ángulo formado entre  𝑣  y 𝐵⃗  , de modo que: 
+- Si  𝑣  ⊥ 𝐵⃗ → |𝐹 𝑚| es máxima 
+- Si  𝑣  ∥ 𝐵⃗ →  la partícula no se desvía 
+- Si  0°<(𝑣,𝐵̂ )<90°, la trayectoria de ‘q’ es helicoidal 
+Cuando una partícula cargada ‘q’ entra con una velocidad 𝑣  en un campo magnético 𝐵⃗ , la partícula 
+sufre una fuerza lateral que la desv ía de su trayectoria rectilínea . L a expresión de dicha fuerza 
+magnética viene dada por la siguiente ecuación:   𝐹 𝑚=𝑞(𝑣  × 𝐵⃗ ) (𝑁)   ;    |𝐹𝑚|=|𝑞·𝑣·𝐵·𝑠𝑒𝑛(𝛼)| 
+ TRAYECTORIA DE UNA PARTÍCULA CARGADA (q) EN EL SENO DE UN CAMPO MAGNÉTICO (B) 
+Dado que 𝐹 𝑚 es perpendicular a 𝑣 = 
+∆𝑥 
+∆𝑡 en 
+todo momento , dicha fuerza no puede 
+realizar trabajo sobre q, ya que 𝑊𝑚𝑎𝑔=𝐹 𝑚·
+∆𝑥⃗ =0 (𝐹 𝑚 y ∆𝑥  son perpendiculares). 
+Por el teorema de 𝑊𝑡𝑜𝑡𝑎𝑙𝑒𝑠= ∆𝐸𝑐𝑖𝑛 , la 
+energía cinética (la rapidez |𝑣|) de q no 
+varía y, además, 𝐹 𝑚 es de carácter 
+centrípeto, luego: si q entra con  𝑣  
+perpendicular a 𝐵⃗ , la trayectoria será un 
+círculo de radio R y el movimiento será un 
+MCU.  
+corrientes paralelas  
+se atraen 
+ 
+corrientes antiparalelas  
+se repelen 
+      
+𝑥 (𝑖 ) 
+      
+𝑦 (𝑗 ) 
+      
+𝑧 (𝑘⃗ )
+
+===== PAGINA 9 =====
+FÍSICA 2º BACHILLERATO (E.B.A.U.)                                                                                                         LUCAS C. aka LUVIC05 
+ LA FUERZA DE LORENTZ 
+Cuando en una región del espacio coexisten un campo eléctrico ‘E’ y uno magnético ‘B’, la partícula 
+cargada en movimiento con velocidad sufre las siguientes consecuencias: 
+ 𝐹 𝑒=𝑞𝐸⃗  →  𝑠𝑖𝑟𝑣𝑒 𝑝𝑎𝑟𝑎 𝑑𝑎𝑟𝑙𝑒 𝑎𝐶 𝑡𝑎𝑛𝑔𝑒𝑛𝑐𝑖𝑎𝑙= 
+𝑑|𝑣|
+𝑑𝑡  
+ 𝐹 𝑚=𝑞(𝑣  × 𝐵⃗ )  →  𝑠𝑖𝑟𝑣𝑒 𝑝𝑎𝑟𝑎 𝑑𝑎𝑟𝑙𝑒 𝑎𝐶 𝑛𝑜𝑟𝑚𝑎𝑙= 
+𝑣2
+𝑅   
+La suma de ambas fuerzas se conoce como la Fuerza de Lorentz y se escribe: 
+ 𝐹 𝐿=𝑞·( 𝐸⃗ + 𝑣 ×𝐵⃗  )(𝑁)       𝑜      𝐹 𝐿= 𝐹 𝑒+ 𝐹 𝑚  
+ 
+ EL SELECTOR DE VELOCIDADES 
+Si  |𝐹 𝑚|>|𝐹 𝑒| → +𝑞 𝑖𝑟á ℎ𝑎𝑐𝑖𝑎 𝑙𝑎 𝑝𝑙𝑎𝑐𝑎 𝑝𝑜𝑠𝑖𝑡𝑖𝑣𝑎   
+Si  |𝐹 𝑚|<|𝐹 𝑒| → +𝑞 𝑖𝑟á ℎ𝑎𝑐𝑖𝑎 𝑙𝑎 𝑝𝑙𝑎𝑐𝑎 𝑛𝑒𝑔𝑎𝑡𝑖𝑣𝑎  
+Si  |𝐹 𝑚|=|𝐹 𝑒| → +𝑞 𝑠𝑒𝑔𝑢𝑖𝑟á 𝑢𝑛 𝑀𝑅𝑈→  𝒗=
+|𝐸|
+|𝐵| 𝒊  (𝑚/𝑠)    
+ LA LEY DE BIOT-SAVART 
+Una carga q, que se desplaza en el vacío con una velocidad ‘v’, genera un campo magnético ‘B’, en 
+un punto ‘P’. El campo magnético ‘B’ generado por un hilo rectilíneo muy largo a una distancia ‘r’ del 
+hilo se puede observar en la primera imagen. 
+𝐵⃗ = 𝜇𝑜
+4𝜋·𝑞 · 𝑣  × 𝑢⃗ 𝑟
+𝑟2                                𝐵⃗ ℎ𝑖𝑙𝑜 (𝑟)= 𝜇𝑜·𝐼
+2𝜋𝑟 𝑢⃗   (𝑇𝑒𝑠𝑙𝑎) 
+ 
+ 
+Las líneas del campo ‘B’ son líneas concéntricas al hilo y giran siguiendo la regla de Maxwell, siendo 
+la dirección del pulgar la coincidente con la corriente. El cam po del hilo e puede dibujar tanto en 2D 
+como en 3D. 
+ LA LEY DE LAPLACE 
+Del mismo modo que dos masas interaccionan entre sí y se ejercen una fuerza mutua de atracción y 
+que dos cargas pueden también atraerse repelerse, también dos corrientes pueden sufrir una fuerza, 
+cada una por culpa de la otra. 
+𝐹 1,2= 𝐼2𝐿2⃗⃗⃗⃗⃗⃗⃗⃗ ×𝐵1⃗⃗⃗⃗      ;     𝐹 2,1= 𝐼1𝐿1⃗⃗⃗⃗⃗⃗⃗ ×𝐵2⃗⃗⃗⃗   (𝐿𝑒𝑦 𝑑𝑒 𝐿𝑎𝑝𝑙𝑎𝑐𝑒)   ;  |𝐹 1,2|
+𝐿2
+= 𝜇𝑜·𝐼1· 𝐼2
+2·𝜋·𝑑   (𝑁
+𝑚) = |𝐹 2,1|
+𝐿1
+   
+ DEFINICIÓN DE AMPERIO Y DEFINICIÓN DE TESLA 
+1 Amperio es la intensidad de corriente que circula por dos cables paralelos de 1 metro de longitud, separados 
+por una distancia de 1 metro y que generará entre ellos una fuerza de atracción de 2*10-7 Newtons. 
+1 Tesla es la intensidad de campo magnético que pr oduce una fuerza de 1 Newton sobre una partícula de 1 
+Coulombio que penetra con una velocidad de 1 m/s perpendicular al campo ‘B’.
+-   -   -   -   -   -   -   -   -   -   -   
+-    
++   +   +   +   +   +   +   +   +   
++   -   -
+
+===== PAGINA 10 =====
+FÍSICA 2º BACHILLERATO (E.B.A.U.)                                                                                                         LUCAS C. aka LUVIC05 
+TEMA 7 – INDUCCIÓN ELECTROMAGNÉTICA 
+FÓRMULAS 
+Φ𝑀 (𝑓𝑙𝑢𝑗𝑜 𝑚𝑎𝑔𝑛é𝑡𝑖𝑐𝑜)=𝐵⃗ ·𝑆 =|𝐵||𝑆|𝑐𝑜𝑠(𝐵,𝑆̂ )  (𝑊𝑏) 
+𝜀̅= −∆𝜙
+Δ𝑡 = 𝜙𝑖−𝜙𝑓
+𝑡𝑓−𝑡𝑖
+  (𝑣𝑜𝑙𝑡𝑖𝑜𝑠)  (𝑓.𝑒.𝑚.  𝑚𝑒𝑑𝑖𝑎)  
+ 
+𝜀=𝐵·𝐿·𝑣  (𝑣𝑜𝑙𝑡𝑖𝑜𝑠)(Henry)(f.e.m. extremos barra MRU) 
+𝜀 (𝑡𝑜)= −𝑑𝜙
+d𝑡|
+𝑡𝑜
+ (𝑣𝑜𝑙𝑡𝑖𝑜𝑠)  (𝑓.𝑒.𝑚.  𝑖𝑛𝑠𝑡𝑎𝑛𝑡á𝑛𝑒𝑎)  
+ 
+ 
+ 
+ 
+CUESTIONES TEÓRICAS 
+            
+ LEY DE FARADAY 
+La fuerza electromotriz o voltaje inducido en un circuito cerrado es directamente proporcional a la variación 
+del flujo magnético a través de la superficie encerrada por el circuito . Existen dos casos en los que se 
+aplica la Ley de Faraday: 
+En un intervalo del tiempo:   𝜀̅= −
+∆𝜙
+Δ𝑡 = 
+𝜙𝑖−𝜙𝑓
+𝑡𝑓−𝑡𝑖
+  (𝑣𝑜𝑙𝑡𝑖𝑜𝑠)  (𝑓.𝑒.𝑚.  𝑚𝑒𝑑𝑖𝑎)  
+En un instante del tiempo concreto:   𝜀 (𝑡𝑜)= −
+𝑑𝜙
+d𝑡|
+𝑡𝑜
+ (𝑣𝑜𝑙𝑡𝑖𝑜𝑠)  (𝑓.𝑒.𝑚.  𝑖𝑛𝑠𝑡𝑎𝑛𝑡á𝑛𝑒𝑎)  
+ LEY DE LENZ 
+La variación del flujo magnético induce una corriente con tal 
+sentido, que tiende a oponerse a la variación del flujo 
+magnético que la produce . Esto significa que cada campo 
+magnético generado por una corriente  inducida va en la 
+dirección opuesta al cambio en el campo original . Es decir, 
+que c uando el flujo magnético disminuye la corriente 
+inducida aumenta, y al contrario. Por ello la ley de Lenz es 
+una manifestación de la conservación de la energía. 
+ 
+ SÍNTESIS DE MAXWELL 
+La síntesis de Maxwell consta de cuatro ecuaciones con cuatro incógnitas que se pueden resolver. Las 
+ecuaciones de Maxwell predicen la existencia de las ondas electromagnéticas , que Hertz descubrió 
+años más tarde . T ambién permiten deducir que las ondas electromagnéticas se desplazan a la 
+velocidad de la luz. Además, contribuyeron a crear el concepto de campo electromagnético que permitió 
+unificar el campo eléctrico el campo magnético y las leyes de la óptica. *Ecuaciones de Maxwell* 
+ 
+ ESPECTRO ELECTROMAGNÉTICO 
+La secuencia de todas las ondas electromagnéticas conocidas, ordenadas según su longitud de onda 
+o su frecuencia. Todas las ondas electromagnéticas tienen en común su naturaleza. No obstante, cada 
+grupo de ondas, caracterizado por un intervalo determinado de longitudes de onda y de frecuencias, 
+tiene su propia forma de producción, y también unas aplicaciones prácticas específicas. 
+ 
+∇⃗⃗ ·𝐸⃗ =
+𝜌
+𝜀𝑜
+ (𝐿𝑒𝑦 𝑑𝑒 𝐺𝑎𝑢𝑠𝑠)      ∇⃗⃗ ·𝐵⃗ =0   (𝐿𝑒𝑦 𝑑𝑒 𝐺𝑎𝑢𝑠𝑠 𝑑𝑒𝑙 𝑀𝑎𝑔𝑛𝑒𝑡𝑖𝑠𝑚𝑜)          
+∇⃗⃗ ·𝐸⃗ =−𝜕𝐵⃗ 
+𝜕𝑡 (𝐿𝑒𝑦 𝑑𝑒 𝐹𝑎𝑟𝑎𝑑𝑎𝑦)   ∇⃗⃗ ·𝐵⃗ =𝜇𝑜 𝑗  +𝜇𝑜𝜀𝑜
+𝜕𝐸⃗ 
+𝜕𝑡  (𝐿𝑒𝑦 𝑑𝑒 𝐴𝑚𝑝𝑒𝑟𝑒−𝑀𝑎𝑥𝑤𝑒𝑙𝑙) 
+      
+ 
+ 
+  {𝐸⃗  (𝑥,𝑡)= 𝐸⃗ 𝑜·𝑠𝑒𝑛(𝜔𝑡−𝑘𝑥)  (𝑁/𝐶)
+𝐵⃗  (𝑥,𝑡)= 𝐵⃗ 𝑜·𝑠𝑒𝑛 (𝜔𝑡−𝑘𝑥)   (𝑇)    
+ 
+                                    ECUACIONES DE UN FOTÓN 
+ 
+    ECUACIONES DE MAXWELL
+
+===== PAGINA 11 =====
+FÍSICA 2º BACHILLERATO (E.B.A.U.)                                                                                                         LUCAS C. aka LUVIC05 
+ ONDAS ELECTROMAGNÉTICAS (DEFINICIÓN, PROPIEDADES Y CLASIFICACIÓN) 
+Las ondas electromagnéticas son transversales y consisten en la propagación, sin necesidad de ningún 
+soporte material, de un campo eléctrico y de un campo magnético perpendiculares entre sí y a la 
+dirección de propagación. 
+Características de las ondas electromagnéticas: 
+ Son originadas por cargas eléctricas aceleradas. 
+ Consisten en la variación periódica del estado electromagnético del espacio. Un campo 
+eléctrico variable produce un campo magnético variable, éste a su vez origina un campo 
+magnético variable y así sucesivamente. Ambos se propagan en el espacio. 
+ No necesitan soporte material para propagarse. 
+ En estas ondas, los vectores de los campos eléctrico y magnético, 𝐸⃗  y 𝐵⃗  varían 
+periódicamente con el tiempo y la posición. 
+ Los módulos de los vectores 𝐸⃗  y 𝐵⃗  en una posición y tiempo determinado cumplen: 𝑐= 
+𝐸𝑜
+𝐵𝑜
+  
+ La velocidad de las ondas electromagnéticas depende del medio de propagación. Su valor en 
+el vacío viene dado por la expresión:  𝑐= 
+1
+√𝜀𝑜𝜇𝑜
+→ 𝑐= √
+𝑘𝑜
+𝑘𝑚
+  donde 𝜀𝑜 (constante dieléctrica 
+del vacío), 𝜇𝑜 (permeabilidad magnética del vacío), 𝑘0 (constante eléctrica o de Coulomb) y 
+𝑘𝑚 (constante magnética) 
+Si se sustituyen estos valores en las expresiones dadas, se comprueba que 𝑐=3·108  𝑚/𝑠. 
+ Las ondas electromagnéticas también cumplen las relaciones entre velocidad, longitud de 
+onda y frecuencia. 𝜆=𝑐·𝑇  ;  𝜆=
+𝑐
+𝑓
+
+===== PAGINA 12 =====
+FÍSICA 2º BACHILLERATO (E.B.A.U.)                                                                                                         LUCAS C. aka LUVIC05 
+TEMA 8 – ÓPTICA FÍSICA 
+FÓRMULAS 
+𝑛= 
+𝑐
+𝑣  ; 𝑛= 
+𝜆𝑜
+𝜆  ; 𝛿 (𝑑𝑒𝑠𝑣𝑖𝑎𝑐𝑖ó𝑛 𝑎𝑛𝑔𝑢𝑙𝑎𝑟)=𝑖̂1+𝑟̂2−𝜑̂   
+𝑛1·𝑠𝑒𝑛(𝑖̂)=𝑛2·𝑠𝑒𝑛(𝑟̂)  ;  
+𝑠𝑒𝑛(𝑖̂)
+𝑠𝑒𝑛(𝑟̂) = 
+𝑣1
+𝑣2
+  ;  
+𝑣1
+𝑣2
+ = 
+𝑛2
+𝑛1
+    
+𝐿̂1,2=𝑎𝑟𝑐𝑠𝑒𝑛 (𝑛2
+𝑛1
+) →  𝑛1·𝑠𝑒𝑛(𝐿̂1,2)=𝑛2·𝑠𝑒𝑛(90°) 
+𝜑̂ (á𝑛𝑔𝑢𝑙𝑜  𝑑𝑒𝑙 𝑐𝑜𝑛𝑠𝑡𝑟𝑢𝑐𝑡𝑜𝑟)=𝑖̂2+𝑟̂1 
+CUESTIONES TEÓRICAS 
+     
+ TEORÍA ONDULATORIA – SEPTIEMBRE 2000 A C.III 
+Los fenómenos físicos más característicos que nos permiten caracterizar a la luz como una onda son: 
+- Las interferencias: se pueden observar mediante el experimento de la rendija de Young, produciéndose gracias a 
+la difracción. 
+- La difracción: se explica como el fenómeno en el que una onda la luz que pasa por un orificio comparable a su 
+longitud de onda se propaga en todas las direcciones tras pasar por este. 
+ TEORÍA CORPUSCULAR – SEPTIEMBRE 2000 B C.III  
+- La radiación del cuerpo negro: estudiada por Planck, para que fuera descrita correctamente se tenía que asumir 
+que la luz (con su freq.) es absorbida por múltiplos enteros de un cuanto de energía, E = h·f. 
+- El efecto fotoeléctrico: explicado por Einstein, suponiendo que la luz estaba formada por fotones de energía, E = 
+h·f. Parte de esa energía se usa para romper las fuerzas que unen los electrones a la materia, el resto aparece como 
+la energía cinética de los electrones emitidos. 
+ TEORÍA ÍNDICE DE REFRACCIÓN – JUNIO 2009 B C.III 
+Si v es la velocidad de propagación de la luz en un medio transparente, el índice de refracción respecto al vacío del 
+mismo es: n=c/v. Es una medida que permite determinar la reducción de la velocidad de la luz al propagarse por un 
+medio transparente distinto al del vacío. 
+En la trayectoria de un rayo: 𝑛1·𝑠𝑒𝑛(𝑖̂)=𝑛2·𝑠𝑒𝑛(𝑟̂)  (𝐿𝑒𝑦 𝑑𝑒 𝑆𝑛𝑒𝑙𝑙)  
+ DIFRACCIÓN DE UNA ONDA – JUNIO 2011 A C.III  
+Difracción: es el fenómeno por el cual una onda que atraviesa un orificio 
+comparable al de su longitud de onda, se propaga por éste traspasándolo y 
+al hacerlo comportándose como un nuevo foco emisor de ondas, así viene 
+explicado por el principio de Huygens. 
+ DISPERSIÓN DE LA LUZ EN UN PRISMA – SEPTIEMBRE 2010 B C.III 
+La luz blanca es aquella que procede del Sol. Esta es una mezcla de diferentes colores. Es por ello, por lo que al 
+refractarse en algún medio quedará separada (dispersada) en sus colores. La causa de est e fenómeno es que al 
+aumentar la longitud de onda (𝜆), disminuye el índice de refracción (𝑛). 
+ REFLEXIÓN TOTAL INTERNA Y ÁNGULO LÍMITE – SEPTIEMBRE 2008, 2007, 2001; JULIO 2016; JUNIO 2012 
+Reflexión Total Interna: cuando un rayo de luz pasa de un medio a otro en el que se propaga con mayor velocidad 
+(𝑛1>𝑛2), el rayo refractado se aleja de la normal. Si el ángulo de incidencia crece, también lo hace el de refracción. 
+Para un ángulo determinado, llamado ángulo límite (𝐿̂), el rayo refractado forma 90º con la normal. Para ángulos de 
+incidencia superiores al ángulo límite se produce una RTI. 
+𝐿̂1,2=𝑎𝑟𝑐𝑠𝑒𝑛 (𝑛2
+𝑛1
+) →  𝑛1·𝑠𝑒𝑛(𝐿̂1,2)=𝑛2·𝑠𝑒𝑛(90°)
+
+===== PAGINA 13 =====
+FÍSICA 2º BACHILLERATO (E.B.A.U.)                                                                                                         LUCAS C. aka LUVIC05 
+TEMA 9 – ÓPTICA GEOMÉTRICA 
+FÓRMULAS 
+1
+𝑠′−1
+𝑠=(𝑛−1)(1
+𝑅1
+− 1
+𝑅2
+)  𝐸𝑐.  𝐿𝑒𝑛𝑡𝑒𝑠 𝐷𝑒𝑙𝑔𝑎𝑑𝑎𝑠 
+1
+𝑠′−1
+𝑠= 1
+𝑓′  {𝑠′>0→𝑅𝐸𝐴𝐿       
+𝑠′<0→ 𝑉𝐼𝑅𝑇𝑈𝐴𝐿 {𝑀𝐿 >0→ 𝐷𝐼𝑅𝐸𝐶𝑇𝐴    
+𝑀𝐿<0→𝐼𝑁𝑉𝐸𝑅𝑇𝐼𝐷𝐴 
+𝑀𝐿 =𝑦′
+𝑦 =𝑠′
+𝑠  ; 𝐶 (𝐷𝑝)= 1
+𝑓′(𝑚)= (𝑛−1)(1
+𝑅1
+− 1
+𝑅2
+)  
+𝐿𝑒𝑛𝑡𝑒𝑠 𝐶𝑜𝑛𝑣𝑒𝑟𝑔𝑒𝑛𝑡𝑒𝑠
+𝐿𝑒𝑛𝑡𝑒𝑠 𝐷𝑖𝑣𝑒𝑟𝑔𝑒𝑛𝑡𝑒𝑠    
+ 
+CUESTIONES TEÓRICAS 
+LENTES DIVERGENTES                                        CÓDIGO DE SIGNOS 
+f ’ < 0 
+LENTES CONVERGENTES  f ’ > 0 
+ 
+ ASTIGMATISMO 
+Es un defecto debido a que las superficies que limitan los diversos medios refringentes del ojo -en especial, 
+la córnea- no son perfectamente esféricas, sino que tienen una curvatura mayor en un plano que en otro. 
+Se pone de manifiesto en que no se pueden ver simultáneamente y con claridad dos rectas perpendiculares 
+situadas en el mismo plano. El astigmatismo se corrige por medio de lentes cilíndricas de convergencia 
+adecuada y cuyas generatrices sean paralelas a uno de los planos de simetría del ojo. 
+ 
+ 
+’
+
+===== PAGINA 14 =====
+FÍSICA 2º BACHILLERATO (E.B.A.U.)                                                                                                         LUCAS C. aka LUVIC05 
+ MIOPÍA 
+En el caso del ojo miope, el globo ocular es demasiado largo en comparación con 
+el radio de curvatura de la córnea y, por tanto, la imagen de un objeto situado en 
+el infinito se forma delante de la retina. El punto remoto del ojo se acerca y los 
+objetos lejanos se ven borrosos.  
+Por regla general, el punto próximo de un ojo miope también se encuentra más 
+cercano que lo que corresponde a una persona con vista normal, pudiendo llegar 
+a ser de sólo 5 cm. 
+La miopía se corrige mediante el uso de lentes divergentes que formen la imagen 
+de los objetos lejanos a una distancia del ojo no superior al punto remoto, es decir, 
+tales que su foco imagen coincida con el punto remoto del ojo. De esta manera se 
+consigue que los rayos paralelos al eje y procedentes del infinito entren en el ojo, 
+tras refractarse en la lente, como si procedieran del punto remoto. 
+ 
+ HIPERMETROPÍA 
+Es el defecto opuesto a la miopía. Se debe a que el globo del ojo es demasiado corto, 
+o bien el radio de curvatura de la córnea es muy elevado y, por lo tanto, la imagen de 
+un objeto situado en el infinito se forma sin acomodación detrás de la retina. Por la 
+misma razón el punto próximo del ojo hipermétrope se encuentra más lejos de lo 
+normal.  
+De esta forma, los objetos lejanos se ven perfectamente con acomodación, pero para 
+la visión de los objetos próximos es necesaria la utilización de lentes convergentes 
+tales que formen la imagen del objeto en el punto próximo o más allá de él.
+
+===== PAGINA 15 =====
+FÍSICA 2º BACHILLERATO (E.B.A.U.)                                                                                                         LUCAS C. aka LUVIC05 
+TEMA 10 – RELATIVIDAD ESPECIAL 
+FÓRMULAS 
+{  
+  𝑥′=𝛾·(𝑥−𝑣𝑡)     
+𝑦′=𝑦                        
+𝑧′=𝑧                         
+𝑡′=𝛾·(𝑡− 𝑣
+𝑐2·𝑥)}  
+  
+   𝑇𝑟𝑎𝑛𝑠𝑓𝑜𝑟𝑚𝑎𝑐𝑖𝑜𝑛𝑒𝑠 𝑑𝑒 𝐿𝑜𝑟𝑒𝑛𝑡𝑧 
+𝛾 = 1
+√1−𝑣2
+𝑐2
+  ; 𝛾∈ℝ  (𝑓𝑎𝑐𝑡𝑜𝑟 𝑅𝑒𝑙𝑎𝑡𝑖𝑣𝑖𝑠𝑡𝑎 𝑜 𝐿𝑜𝑟𝑒𝑛𝑡𝑧) 
+{
+ 
+ 𝐸𝑜=𝑚𝑜𝑐2=𝐸𝑇−𝐸𝑐 (𝐸.𝑒𝑛 𝑟𝑒𝑝𝑜𝑠𝑜)          
+𝐸𝑐=(𝛾−1)·𝐸𝑜=𝐸𝑇−𝐸𝑜 (𝐸.𝐶𝑖𝑛é𝑡𝑖𝑐𝑎)  
+𝐸𝑇=𝑚𝑐2=𝐸𝑜+𝐸𝑐 (𝐸.𝑅𝑒𝑙𝑎𝑡𝑖𝑣𝑖𝑠𝑡𝑎)           
+𝑝 =𝑚𝑣=𝛾·𝑚𝑜𝑣  (Ctad.de movimiento) 
+ 
+ 
+∆𝑡= 𝛾·∆𝑡′= ∆𝑡′
+√1−𝑣2
+𝑐2
+ →∆𝑡>∆𝑡′ (𝑑𝑖𝑙𝑎𝑡𝑎𝑐𝑖ó𝑛 𝑡𝑒𝑚𝑝𝑜𝑟𝑎𝑙) 
+𝐿′= 𝛾·𝐿 = 𝐿
+√1−𝑣2
+𝑐2
+ →𝐿′>𝐿  (𝑐𝑜𝑛𝑡𝑟𝑎𝑐𝑐𝑖ó𝑛 𝑙𝑜𝑛𝑔𝑖𝑡𝑢𝑑𝑖𝑛𝑎𝑙) 
+∆𝑥 (𝑝𝑟𝑜𝑝𝑖𝑎)≡𝐿′= 𝑣·∆𝑡   ;  ∆𝑥′(𝑖𝑚𝑝𝑟𝑜𝑝𝑖𝑎)≡𝐿= 𝑣·∆𝑡′  
+𝑚=𝛾·𝑚𝑜= 𝑚𝑜
+√1−𝑣2
+𝑐2
+ (𝑚𝑎𝑠𝑎 𝑟𝑒𝑙𝑎𝑡𝑖𝑣𝑖𝑠𝑡𝑎) 
+ 
+CUESTIONES TEÓRICAS 
+ DILATACIÓN TEMPORAL 
+La dilatación del tiempo es el fenómeno predicho por la teoría de la relatividad, por el cual un observador 
+observa que el reloj de otro (un reloj físicamente idéntico al suyo) está marcando el tiempo a un ritmo  
+menor que el suyo. 
+ Δt’ (tiempo propio): intervalo de tiempo entre dos sucesos que ocurren en un mismo punto para 
+un sistema de referencia dado. 
+ Δt (tiempo impropio): intervalo entre dos sucesos que tienen lugar en puntos diferentes para un 
+sistema de referencia. 
+∆𝑡= 𝛾·∆𝑡′= ∆𝑡′
+√1−𝑣2
+𝑐2
+ →∆𝑡>∆𝑡′ 
+ CONTRACCIÓN LONGITUDINAL 
+El observador que “ve” un objeto en reposo respecto a él aprecia su máxima longitud (longitud propia L’)  
+mientras que el observador que lo ve en movimiento lo ve más pequeño (longitud impropia L) en la  
+dirección del movimiento. Siempre se cumple que L’ > L en problemas de distancias interplanetarias. 
+𝐿′= 𝛾·𝐿 = 𝐿′
+√1−𝑣2
+𝑐2
+ →𝐿′>𝐿 
+ AUMENTO DE LA MASA 
+mo: masa propia. Es la masa que está en reposo y por tanto es absoluta.  
+m: masa impropia. Es la masa que tiene una partícula al ir a una velocidad cercana a ‘c’, por tanto, se 
+denomina masa relativista. 
+ 
+ POSTULADOS DE LA RELATIVIDAD ESPECIAL 
+1. Todas las ley es de la física son válidas y tienen las mismas expresiones matemáticas en todos los 
+sistemas de referencia inerciales. 
+2. La velocidad de la luz es la misma para todos los sistemas inerciales. “c” es igual para cualesquiera 
+que sean el movimiento del foco y del observador. 
+excepción: 
+JUNIO 2001
+
+===== PAGINA 16 =====
+FÍSICA 2º BACHILLERATO (E.B.A.U.)                                                                                                         LUCAS C. aka LUVIC05 
+ CONSECUENCIAS DE LA RELATIVIDAD ESPECIAL 
+1. Las leyes del movimiento de Newton son una aproximación de otras leyes reales más generales. 
+2. La noción del espacio, tomada aisladamente, carece de sentido, pues sólo tiene realidad el 
+conjunto espacio-tiempo. 
+3. Ninguna velocidad puede exceder la velocidad de la luz. 
+4. La energía está dotada de una especie de inercia, que es equivalente a la masa. E=mc2 
+5. Las dimensiones de los cuerpos varían con la velocidad de que estén animados. 
+6. La masa de un cuerpo aumenta con velocidad, hasta hacerse infinita si el cuerpo llega a alcanzar 
+la velocidad de la luz. 
+7. No existe tiempo general y absoluto, sino tiempo local propio de cada sistema de referencia. 
+ 
+TEMA 11 – FÍSICA CUÁNTICA 
+FÓRMULAS 
+𝐸=ℎ·𝑓  (𝐻𝑖𝑝ó𝑡𝑒𝑠𝑖𝑠 𝑑𝑒 𝑃𝑙𝑎𝑛𝑐𝑘) 
+𝑊𝑒 [𝑋]=ℎ·𝑓𝑜 (𝑇𝑟𝑎𝑏𝑎𝑗𝑜 𝑑𝑒 𝐸𝑥𝑡𝑟𝑎𝑐𝑐𝑖ó𝑛)  (𝑋=𝑚𝑒𝑡𝑎𝑙) 
+𝐸𝛾=  𝑊𝑒+𝐸𝐶  { 𝐸𝛾 >𝑊𝑒 → 𝑠𝑒 𝑎𝑟𝑟𝑎𝑛𝑐𝑎𝑛 𝑒−      
+ 𝐸𝛾<𝑊𝑒 → 𝑛𝑜 𝑠𝑒 𝑎𝑟𝑟𝑎𝑛𝑐𝑎𝑛 𝑒− 
+𝐸𝐶 = 𝑝2
+2𝑚  →  𝑝=√2𝑚·𝐸𝐶   (𝑘𝑔𝑚
+𝑠 )  
+1
+𝜆=𝑅𝐻(1
+𝑛2− 1
+𝑚2)  (𝑚>𝑛)  (Á𝑡𝑜𝑚𝑜 𝑑𝑒 𝐵𝑜ℎ𝑟) 
+ℎ=6′626·10−34  𝐽·𝑠  (𝑐𝑜𝑛𝑠𝑡𝑎𝑛𝑡𝑒 𝑑𝑒 𝑃𝑙𝑎𝑛𝑐𝑘) 
+𝐸𝛾=ℎ·𝑓=ℎ· 𝑐
+𝜆𝑚á𝑥
+ → 𝐸𝐶=𝑒𝑉𝑜=
+1
+2𝑚·𝑣𝑚á𝑥
+2 =ℎ (𝑓−𝑓𝑜) 
+𝑉𝑜= 
+ℎ
+𝑒 𝑓− 
+ℎ
+𝑒 𝑓𝑜    ←   (𝐸𝑐.𝑑𝑒𝑙 𝑒𝑓𝑒𝑐𝑡𝑜 𝑓𝑜𝑡𝑜𝑒𝑙é𝑐𝑡𝑟𝑖𝑐𝑜)       
+𝑝=ℎ
+𝜆  → 𝜆𝐷𝐵 =ℎ
+𝑝   (𝐷𝑢𝑎𝑙𝑖𝑑𝑎𝑑 𝑜𝑛𝑑𝑎−𝑐𝑜𝑟𝑝𝑢𝑠𝑐𝑢𝑙𝑎𝑟) 
+∆𝑥·∆𝑝≥
+ℎ
+4𝜋   ∆𝑥·∆𝑝≥
+ℏ
+2       𝑃𝑟𝑖𝑛𝑐𝑖𝑝𝑖𝑜 𝑑𝑒 𝐼𝑛𝑑𝑒𝑡𝑒𝑟𝑚𝑖𝑛𝑎𝑐𝑖ó𝑛
+𝑑𝑒 𝐻𝑒𝑖𝑠𝑒𝑛𝑏𝑒𝑟𝑔  
+ 
+CUESTIONES TEÓRICAS 
+ EFECTO FOTOELÉCTRICO 
+El efecto fotoeléctrico ocurre cuando un fotón de frecuencia adecuada incide sobre un 
+electrón del cátodo, y lo ex trae proporcionando además  energía cinética.  La 
+conservación de la energía implica:  
+𝐸𝛾=ℎ·𝑓 =ℎ·
+𝑐
+𝜆𝑚á𝑥
+ → 𝐸𝐶=𝑒𝑉𝑜=
+1
+2𝑚·𝑣𝑚á𝑥
+2 =ℎ (𝑓−𝑓𝑜)   //   𝑉𝑜= 
+ℎ
+𝑒 𝑓− 
+ℎ
+𝑒 𝑓𝑜  
+En el proceso, el fotón de la luz desaparece y toda su energía es empleada por el electrón. 
+ ÁTOMO DE BOHR 
+La naturaleza de la energía en los átomos es discontinua.  
+ Espectro de emisión: gas enc errado y sometido a altos voltajes emite luz. 
+Esta se pasa por un prisma y se analiza, donde aparece un espectro emisor. 
+ Espectro de absorción: gas encerrado a baja presión y se somete a luz 
+blanca pasando la luz no absorbida por el gas tendremos el espect ro de 
+absorción. 
+Los espectros de absorción y de emisión son complementarios.  Cada raya del 
+espectro de calcula según: 
+1
+𝜆=𝑅𝐻(1
+𝑛2− 1
+𝑚2)  (𝑚>𝑛)   ;   𝑅𝐻 (𝑐𝑡𝑒.𝑑𝑒 𝑅ℎ𝑦𝑑𝑏𝑒𝑟𝑔)= 1′097·107 (𝑚−1) 
+Los postulados del átomo de Bohr son: 
+1) Los electrones se mueven en órbitas circulares en las que no emiten energía. Las órbitas  son 
+estados estacionarios de energía. A cada órbita le corresponde una energía tanto mayor cuanto 
+más alejada se encuentre del núcleo.
+
+===== PAGINA 17 =====
+FÍSICA 2º BACHILLERATO (E.B.A.U.)                                                                                                         LUCAS C. aka LUVIC05 
+2) Nos todas las órbitas son posibles, solo las que tengan como momento angular un múltiplo entero 
+de  𝐿=𝑚𝑣𝑟=𝑛
+ℎ
+2𝜋  ;  𝑛∈𝐸 
+ 
+3) Un electrón radia energía cuando cambia de órbita superior a inferior. 
+ De superior a inferior: libera energía en forma de luz. 
+ De inferior a superior: absorbe energía equivalente a la diferencia de energías de 
+órbitas. La energía viene dada por: 𝐸2−𝐸1=ℎ𝑓 
+ DUALIDAD ONDA-CORPUSCULAR 
+Ya dijo Planck que la luz tiene características de onda y de partícula; y que la materia absorbe energía en 
+cantidades disueltas con la Hipótesis de Broglie: 
+Toda partícula de cantidad de movimiento p lleva asociada una onda cuya longitud de onda cumple la  
+ecuación. 
+𝑝=ℎ
+𝜆  → 𝜆𝐷𝐵=ℎ
+𝑝 
+Los aspectos corpuscular y ondulatorio no se manifiestan simultáneamente.  En 1927 los físicos 
+americanos L. Gemer y C. Davisson  y el inglés G. Thomson comprobaron la dualidad al difractar por medio 
+de un cristal un haz de electrones. 
+ 
+ PRINCIPIO DE INDETERMINACIÓN DE HEISENBERG 
+No se puede determinar simultáneamente y con precisión absoluta la posición y el momento lineal de una 
+partícula microscópica. 
+Para cualquier pareja de magnitudes cuyo producto de acción (energía x tiempo) debe cumplir el principio 
+de indeterminación. Por ejemplo: 
+∆𝑥·∆𝑝≥ ℎ
+4𝜋  ; ∆𝑥·∆𝑝≥ℏ
+2  ; ∆𝐸·∆𝑡≥ ℎ
+4𝜋 ; ∆𝐸·∆𝑡≥ℏ
+2   (𝑙𝑎 𝑐𝑡𝑒.𝑑𝑒 𝑃𝑙𝑎𝑛𝑐𝑘 𝑟𝑒𝑑𝑢𝑐𝑖𝑑𝑎 𝑒𝑠 ℏ= ℎ
+2𝜋) 
+Consecuencias: 
+ El mero hecho de medir modifica el estado natural de un sistema. 
+ Al no existir un conocimiento absoluto de la posición, deja de hablarse de trayectoria (órbita) 
+para pasa a habla de regiones 3D con alta posibilidad de encontrar partículas (orbitales). 
+Aplicaciones: 
+ Microscopio electrónico; usa electrones en lugar de fotones o luz visible para formar 
+imágenes de objetos diminutos. Son muchos más precisos porque la longitud de onda de 
+los electrones es mucho menor a la de los fotones “visibles”. 
+ 
+TEMA 12 – FÍSICA NUCLEAR 
+FÓRMULAS 
+𝑇1 2⁄ = ln (2)
+𝜆 = 𝜏· ln (2)  (𝑠) 
+𝜆= 1
+𝜏  (𝑠−1) (𝑐𝑡𝑒.𝑑𝑒 𝑑𝑒𝑠𝑖𝑛𝑡𝑒𝑔𝑟𝑎𝑐𝑖ó𝑛) 
+𝐴(𝑡) = 𝜆·𝑁(𝑡) (𝐵𝑞) (𝑎𝑐𝑡𝑖𝑣𝑖𝑑𝑎𝑑 𝑑𝑒 𝑢𝑛𝑎 𝑚𝑢𝑒𝑠𝑡𝑟𝑎) 
+𝑁(𝑡) = 𝑁𝑜·𝑒−𝜆·Δ𝑡    ;    𝑁(𝑡) = 𝑁𝑜·2 
+−Δ𝑡
+T1
+2
+ 
+ 
+𝐴(𝑡) = 𝐴𝑜·2 
+−Δ𝑡
+T1
+2
+ 
+      ;    𝑚(𝑡) = 𝑚𝑜·2 
+−Δ𝑡
+T1
+2
+ 
+ 
+𝐴=𝑍+𝑁  (𝐴=𝑛ú𝑚𝑒𝑟𝑜 𝑚á𝑠𝑖𝑐𝑜; 𝑝𝑟𝑜𝑡.+ 𝑛𝑒𝑢𝑡𝑟.) 
+{  
+  𝑋𝑍
+𝐴  ⇒ 𝑌𝑍−2
+𝐴−4 (∗)
++ 𝐻𝑒2
+4  → 𝛼+           (1ª 𝐿𝑒𝑦 𝑆𝑜𝑑𝑑𝑦−𝐹𝑎𝑗𝑎𝑛𝑠) 
+𝑋𝑍
+𝐴  ⇒ 𝑌𝑍+1
+𝐴 + 𝑒−1
+0 + 𝜈̅𝑒0
+0  → 𝛽−       (2ª 𝐿𝑒𝑦 𝑆𝑜𝑑𝑑𝑦−𝐹𝑎𝑗𝑎𝑛𝑠) 
+𝑋𝑍
+𝐴 ∗
+⇒ 𝑋𝑍
+𝐴 + 𝛾0
+0                                   (3ª 𝐿𝑒𝑦 𝑆𝑜𝑑𝑑𝑦−𝐹𝑎𝑗𝑎𝑛𝑠) 
+ 
+𝑋𝑍
+𝐴 ∗ ⇒ 𝑌𝑍−1
+𝐴 + 𝑒1
+0 + 𝜈𝑒0
+0  → 𝛽+ (𝑒𝑚𝑖𝑠𝑖ó𝑛 𝑎𝑟𝑡𝑖𝑓𝑖𝑐𝑖𝑎𝑙) ‼ 
+1 (𝐶𝑖)= 3,7·1010 (𝐵𝑞)   ;   𝐴𝑜= 𝜆·𝑁𝑜  
+Δ𝑡= 
+T1
+2
+ 
+ln (2)·ln(
+𝑁𝑜
+𝑁(𝑡))  (𝑡𝑖𝑒𝑚𝑝𝑜 𝑞𝑢𝑒 𝑙𝑙𝑒𝑣𝑎 𝑚𝑢𝑒𝑟𝑡𝑎 𝑢𝑛𝑎 𝑝𝑎𝑟𝑡í𝑐𝑢𝑙𝑎) 
+(𝑛ú𝑐𝑙𝑒𝑜𝑠sin𝑑𝑒𝑠𝑖𝑛𝑡𝑒𝑔𝑟𝑎𝑟)
+
+===== PAGINA 18 =====
+FÍSICA 2º BACHILLERATO (E.B.A.U.)                                                                                                         LUCAS C. aka LUVIC05 
+CUESTIONES TEÓRICAS 
+ GRÁFICAS                   
+ TIPOS DE EMISIONES RADIOACTIVAS 
+Emisión 𝜶+ (1ª Ley) : emisión espontánea 
+de radiación 𝛼+ (He) por parte de núcleos 
+inestables ricos en protones y  z > 82.  
+SOBRAN PROTONES. 
+Emisión 𝜷− (2ª Ley) : emisión espontánea 
+de radiación 𝛽− por parte de núcleos 
+inestables ricos en neutrones y z  pequeño. 
+SOBRAN NEUTRONES . 𝑛0
+1  ⇒ 𝑝1
+1 + 𝑒−1
+0 +
+𝜈̅𝑒0
+0  → 𝛽− 
+Emisión 𝜸 (3ª Ley): mecanismo por el que los productos de una desintegración radioactiva ceden el 
+exceso d energía. Los rayos gamma son fotones muy energéticos que son emitidos para pasar del estado 
+excitado (tras haberse desintegrado por  𝛽−o 𝛼+) a otro de menor energía. 
+ LEY DE DESINTEGRACIÓN RADIOACTIVA 
+T1/2 (s): tiempo necesario para que una muestra inicial se reduzca a la mitad. Semivida, semiperiodo 
+o periodo de desintegración. 
+𝝉 (s): vida media. Tiempo necesario para que una muestra se reduca al 37%. 
+𝝀 (s-1): constante de desintegración. Probabilidad de que un núcleo dado se desintegre al cabo de un 
+segundo (entre 0 y 1). 
+A(t): actividad de una muestra. Número de desintegraciones por segundo que emite dicha muestra. 
+ FUSIÓN Y FISIÓN NUCLEAR 
+Reacción de fusión: consiste en aproximar dos núcleos ligeros lo suficiente para que las fuerzas  
+nucleares superen la repulsión eléctrica y se forme un núcleo más masivo. 
+Ventajas: más limpio que la fisión. Se libera helio, 
+que es un gas inerte. Los reactivos son fáciles  de 
+obtener y abundan. Rendimiento energético por 
+nucleón mayor que el de fisión. 
+Desventajas: se necesita alcanzar una temperatura 
+de unos 15 millones de grados Kelvin. 
+ 
+Reacción de fisión:  ruptura de un núcleo masivo en dos fragmentos de masa comparable y la  
+liberación de gran cantidad de energía. 
+Ventajas: se libera mucha energía, se liberan 
+neutrones. Hay cantidades enormes de material 
+que se puede usar, no como los combustibles 
+fósiles. 
+Desventajas: los productos son radioactivos y 
+se deben enterrar en cementerios con el riesgo 
+de llegar a acuíferos o ser rotos por terremotos. 
+Explosión de Chernóbil y Fukushima.
