@@ -931,7 +931,7 @@ function formatSimulationNumber(value: number, digits = 2) {
 }
 
 function App() {
-  const [activeView, setActiveView] = useState<MainView>('estudio')
+  const [activeView, setActiveView] = useState<MainView>('inicio')
   const [selectedTopicId, setSelectedTopicId] = useState(studyModules[0]?.id ?? '')
   const [selectedFilter, setSelectedFilter] = useState<ContentFilter>('todo')
   const [isStudySidebarHidden, setIsStudySidebarHidden] = useState(false)
