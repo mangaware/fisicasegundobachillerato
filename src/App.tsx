@@ -4,7 +4,6 @@ import MockExamView, { type MockExamBlock } from './components/MockExamView'
 import { exerciseSheetById, type ExerciseEntry } from './data/exerciseSheets'
 import { formulaSheets } from './data/formulaSheets'
 import {
-  coverageSummary,
   studyModules,
 } from './data/studyPlan'
 import { formulaSheetById } from './data/formulaSheets'
@@ -73,9 +72,9 @@ const homePhysicists = [
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Marie_Curie_c._1920s.jpg/250px-Marie_Curie_c._1920s.jpg',
   },
   {
-    name: 'Richard Feynman',
-    role: 'QED',
-    image: 'https://upload.wikimedia.org/wikipedia/en/thumb/4/42/Richard_Feynman_Nobel.jpg/250px-Richard_Feynman_Nobel.jpg',
+    name: 'Max Planck',
+    role: 'Teoría cuántica',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Max_Planck_1933.jpg',
   },
 ] as const
 
@@ -2029,14 +2028,16 @@ function App() {
                 cuestiones EBAU y práctica real agrupadas por tema dentro de una misma interfaz.
               </p>
 
-              <div className="home-summary-strip">
-                {coverageSummary.slice(0, 3).map((item) => (
-                  <article className="home-summary-chip" key={item.label}>
-                    <span>{item.label}</span>
-                    <strong>{item.value}</strong>
-                  </article>
-                ))}
-              </div>
+              <button
+                className="home-study-cta"
+                type="button"
+                onClick={() => {
+                  openTopic('01-ondas')
+                  setActiveView('estudio')
+                }}
+              >
+                <span>Empezar a estudiar</span>
+              </button>
             </div>
 
             <aside className="home-side-stack" aria-label="Estado rápido de la portada">

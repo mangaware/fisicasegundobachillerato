@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
 @font-face {
   font-family: 'Coalition';
   src: url('/fonts/Coalition_v2..ttf') format('truetype');
@@ -55,6 +57,12 @@
 @font-face {
   font-family: 'Rationale';
   src: url('/fonts/Rationale-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rock Salt';
+  src: url('/fonts/RockSalt-Regular.ttf') format('truetype');
   font-display: swap;
 }
 
@@ -1285,13 +1293,6 @@ body.body-bg-ink-dark .study-quote-box {
   color: rgba(239, 247, 255, 0.88);
 }
 
-.home-summary-strip {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.home-summary-chip,
 .home-side-card,
 .home-physicist-card {
   position: relative;
@@ -1304,24 +1305,76 @@ body.body-bg-ink-dark .study-quote-box {
     0 18px 36px rgba(0, 0, 0, 0.24);
 }
 
-.home-summary-chip {
-  padding: 14px 16px;
-  clip-path: polygon(0 0, 100% 0, 100% 82%, 92% 100%, 0 100%);
-}
-
-.home-summary-chip span {
-  display: block;
-  color: rgba(201, 219, 237, 0.74);
-  font-size: 0.74rem;
-  letter-spacing: 0.08em;
+.home-study-cta {
+  position: relative;
+  justify-self: start;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 0;
+  margin-top: 10px;
+  padding: 22px 44px 20px;
+  border: 4px solid #000000;
+  border-radius: 0;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(0, 0, 0, 0.18) 0 2px, transparent 2.4px),
+    radial-gradient(circle at 68% 72%, rgba(0, 0, 0, 0.14) 0 1.8px, transparent 2.2px),
+    linear-gradient(180deg, #fff76a 0%, #f7eb00 44%, #ffc400 100%);
+  background-size: 18px 18px, 15px 15px, 100% 100%;
+  color: #000000;
+  cursor: pointer;
+  font-family: 'Bangers', 'Rock Salt', 'Arial Black', cursive;
+  font-size: clamp(2.1rem, 3.8vw, 4.2rem);
+  line-height: 1;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
+  text-shadow: none;
+  transform: rotate(-1deg);
+  box-shadow:
+    7px 7px 0 rgba(0, 0, 0, 0.34),
+    0 16px 28px rgba(0, 0, 0, 0.32);
+  transition: all 0.1s ease;
 }
 
-.home-summary-chip strong {
+.home-study-cta::before {
+  content: '';
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: -30px;
+  height: 34px;
+  border-radius: 999px;
+  background:
+    radial-gradient(ellipse at center, rgba(83, 210, 255, 0.95) 0%, rgba(41, 255, 135, 0.54) 36%, rgba(83, 210, 255, 0) 72%);
+  filter: blur(5px);
+  opacity: 0.92;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.home-study-cta::after {
+  content: none;
+}
+
+.home-study-cta span {
+  position: relative;
+  z-index: 1;
   display: block;
-  margin-top: 8px;
-  font-size: 1.6rem;
-  color: #ffffff;
+  white-space: nowrap;
+}
+
+.home-study-cta:hover,
+.home-study-cta:focus-visible {
+  transform: rotate(-1deg) translateY(-2px);
+  background-color: #fff200;
+  box-shadow:
+    9px 9px 0 rgba(0, 0, 0, 0.38),
+    0 0 0 2px rgba(83, 210, 255, 0.28),
+    0 20px 34px rgba(0, 0, 0, 0.36);
+}
+
+.home-study-cta:active {
+  transform: rotate(-1deg) translateY(4px) translateX(4px);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.24);
 }
 
 .home-side-stack {
@@ -4448,9 +4501,13 @@ body.body-bg-ink-dark .study-quote-box {
     padding: 22px;
   }
 
-  .home-summary-strip,
   .home-physicists {
     grid-template-columns: 1fr;
+  }
+
+  .home-study-cta {
+    justify-self: stretch;
+    min-width: 0;
   }
 
   .home-timeline {
