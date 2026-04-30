@@ -1,4 +1,6 @@
 import { Fragment, useDeferredValue, useEffect, useMemo, useState } from 'react'
+import katex from 'katex'
+import katexStyles from 'katex/dist/katex.min.css?raw'
 import MathFormula from './components/MathFormula'
 import MockExamView, { type MockExamBlock } from './components/MockExamView'
 import { exerciseSheetById, type ExerciseEntry } from './data/exerciseSheets'
@@ -55,10 +57,22 @@ const mainViewLabels: Record<MainView, string> = {
   simulacros: 'Simulacros',
   simulaciones: 'Simulaciones',
   ampliacion: 'PhET',
-  resumen: 'Resumen',
+  resumen: 'Chuletas',
 }
 
 const mainViewOrder: MainView[] = ['inicio', 'estudio', 'practica', 'simulacros', 'simulaciones', 'ampliacion', 'resumen']
+
+const universalConstants = [
+  { symbol: 'G', name: 'Constante de gravitación', value: '6,67 x 10^-11', unit: 'N m² kg^-2' },
+  { symbol: 'c', name: 'Velocidad de la luz', value: '3,00 x 10^8', unit: 'm s^-1' },
+  { symbol: 'h', name: 'Constante de Planck', value: '6,63 x 10^-34', unit: 'J s' },
+  { symbol: 'e', name: 'Carga elemental', value: '1,60 x 10^-19', unit: 'C' },
+  { symbol: 'k', name: 'Constante de Coulomb', value: '9,00 x 10^9', unit: 'N m² C^-2' },
+  { symbol: 'm_e', name: 'Masa del electrón', value: '9,11 x 10^-31', unit: 'kg' },
+  { symbol: 'm_p', name: 'Masa del protón', value: '1,67 x 10^-27', unit: 'kg' },
+  { symbol: 'u', name: 'Unidad de masa atómica', value: '1,66 x 10^-27', unit: 'kg' },
+  { symbol: 'g', name: 'Gravedad en la Tierra', value: '9,8', unit: 'm s^-2' },
+] as const
 
 const homePhysicists = [
   {
@@ -702,6 +716,32 @@ function renderTextWithMath(text: string) {
   })
 }
 
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
+}
+
+function renderFormulaForPrint(latex: string) {
+  return katex.renderToString(latex, {
+    displayMode: true,
+    throwOnError: false,
+  })
+}
+
+function getDownloadMeta(topicId: string, kind: 'formulas' | 'teoria') {
+  const seed = topicId.split('').reduce((total, character) => total + character.charCodeAt(0), 0)
+
+  if (kind === 'formulas') {
+    return seed % 2 === 0 ? 'PDF • 800 KB' : 'PDF • 1.1 MB'
+  }
+
+  return seed % 3 === 0 ? 'PDF • 1.8 MB' : 'PDF • 1.2 MB'
+}
+
 const theoryKeywordPattern =
   /(velocidad de propagaci[oó]n|velocidad de oscilaci[oó]n|onda estacionaria|principio de h(?:uy|yu)gens|unidimiensionales|unidimensionales|bidimensionales|tridimensionales|transversales|longitudinales|reflexi[oó]n|refracci[oó]n|difracci[oó]n|transporte|onda)/gi
 
@@ -831,15 +871,6 @@ function renderTheoryStudySection(
   )
 }
 
-function splitHighlightedTopics(highlights: string[]) {
-  const splitIndex = Math.ceil(highlights.length / 2)
-
-  return {
-    problems: highlights.slice(0, splitIndex),
-    theory: highlights.slice(splitIndex),
-  }
-}
-
 function normalizeSearchText(text: string) {
   return text
     .toLowerCase()
@@ -943,6 +974,7 @@ function App() {
   })
   const [searchQuery, setSearchQuery] = useState('')
   const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [isConstantsPanelOpen, setIsConstantsPanelOpen] = useState(false)
   const [visualTheme, setVisualTheme] = useState<VisualTheme>('dark')
   const [spiderMenuState, setSpiderMenuState] = useState<SpiderMenuState>('idle')
   const [windowScrollY, setWindowScrollY] = useState(0)
@@ -966,6 +998,9 @@ function App() {
   const [activePhetGroup, setActivePhetGroup] = useState<PhetGroup>('Ondas')
   const [isPracticeHintOpen, setIsPracticeHintOpen] = useState(false)
   const [isPracticeSolutionOpen, setIsPracticeSolutionOpen] = useState(false)
+  const [isFlashcardMode, setIsFlashcardMode] = useState(false)
+  const [isFlashcardRevealed, setIsFlashcardRevealed] = useState(false)
+  const [flashcardIndex, setFlashcardIndex] = useState(0)
   const [practiceMode, setPracticeMode] = useState<PracticeMode>('todos')
   const [selectedPracticePattern, setSelectedPracticePattern] = useState('todo')
   const [practiceTimerSeconds, setPracticeTimerSeconds] = useState(0)
@@ -1284,6 +1319,8 @@ function App() {
 
     return bestFormula?.formula ?? activeFormulaSheet.formulas[0]
   }, [activePracticeExercise, selectedFormulaSheet])
+  const flashcardFormulas = selectedFormulaSheet.formulas
+  const activeFlashcardFormula = flashcardFormulas[flashcardIndex] ?? flashcardFormulas[0] ?? null
 
   const practiceStatusSummary = useMemo(() => {
     const counts: Record<PracticeStatus, number> = {
@@ -1312,7 +1349,19 @@ function App() {
   useEffect(() => {
     setSelectedPracticePattern('todo')
     setPracticeMode('todos')
+    setFlashcardIndex(0)
+    setIsFlashcardRevealed(false)
   }, [selectedTopicId])
+
+  useEffect(() => {
+    setIsFlashcardRevealed(false)
+  }, [flashcardIndex])
+
+  useEffect(() => {
+    if (flashcardIndex >= flashcardFormulas.length) {
+      setFlashcardIndex(0)
+    }
+  }, [flashcardIndex, flashcardFormulas.length])
 
   useEffect(() => {
     if (practiceIndex >= visiblePracticeExercises.length) {
@@ -1784,6 +1833,255 @@ function App() {
     setIsPracticeTimerRunning(false)
   }
 
+  function goToNextFlashcard(direction: 'next' | 'prev') {
+    if (flashcardFormulas.length === 0) {
+      return
+    }
+
+    setFlashcardIndex((currentIndex) => {
+      if (direction === 'next') {
+        return (currentIndex + 1) % flashcardFormulas.length
+      }
+
+      return (currentIndex - 1 + flashcardFormulas.length) % flashcardFormulas.length
+    })
+  }
+
+  function printFormulaCheatSheet(topicId: string) {
+    const module = studyModules.find((currentModule) => currentModule.id === topicId)
+    const sheet = formulaSheetById[topicId]
+
+    if (!module || !sheet) {
+      return
+    }
+
+    const printWindow = window.open('', '_blank', 'width=900,height=700')
+
+    if (!printWindow) {
+      return
+    }
+
+    const formulasMarkup = sheet.formulas
+      .map((formula) => `
+        <article class="formula-item">
+          <h2>${escapeHtml(formula.label)}</h2>
+          <div class="formula-render">${renderFormulaForPrint(formula.latex)}</div>
+        </article>
+      `)
+      .join('')
+
+    const constantsMarkup = universalConstants
+      .map((constant) => `
+        <article class="constant-item">
+          <strong>${escapeHtml(constant.symbol)}</strong>
+          <span>${escapeHtml(constant.value)} ${escapeHtml(constant.unit)}</span>
+        </article>
+      `)
+      .join('')
+
+    printWindow.document.write(`
+      <!doctype html>
+      <html lang="es">
+        <head>
+          <meta charset="utf-8" />
+          <title>Chuleta de formulas - ${escapeHtml(module.title)}</title>
+          <style>
+            ${katexStyles}
+            @page { size: A4; margin: 12mm; }
+            * { box-sizing: border-box; }
+            body {
+              margin: 0;
+              color: #101214;
+              font-family: Arial, Helvetica, sans-serif;
+              background: #ffffff;
+            }
+            .sheet {
+              min-height: 100vh;
+              border: 3px solid #101214;
+              padding: 16px;
+            }
+            header {
+              display: flex;
+              justify-content: space-between;
+              gap: 16px;
+              border-bottom: 3px solid #101214;
+              padding-bottom: 10px;
+              margin-bottom: 12px;
+            }
+            h1 {
+              margin: 0;
+              font-size: 26px;
+              text-transform: uppercase;
+            }
+            .subtitle {
+              margin: 6px 0 0;
+              color: #394150;
+              font-size: 12px;
+            }
+            .formula-grid {
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              gap: 8px;
+            }
+            .formula-item,
+            .constant-item {
+              border: 1px solid #101214;
+              padding: 8px;
+              break-inside: avoid;
+            }
+            .formula-item h2 {
+              margin: 0 0 5px;
+              font-size: 12px;
+              text-transform: uppercase;
+            }
+            .formula-render {
+              margin: 0;
+              overflow: hidden;
+            }
+            .formula-render .katex-display {
+              margin: 0;
+              text-align: left;
+            }
+            .formula-render .katex {
+              font-size: 1.05em;
+              line-height: 1.35;
+              white-space: normal;
+            }
+            .constants {
+              display: grid;
+              grid-template-columns: repeat(3, minmax(0, 1fr));
+              gap: 6px;
+              margin-top: 12px;
+            }
+            .constant-item {
+              display: flex;
+              justify-content: space-between;
+              gap: 8px;
+              font-size: 10px;
+            }
+            @media print {
+              button { display: none; }
+              .sheet { min-height: auto; }
+            }
+          </style>
+        </head>
+        <body>
+          <main class="sheet">
+            <header>
+              <div>
+                <h1>${escapeHtml(module.title)}</h1>
+                <p class="subtitle">Chuleta de formulas de una cara para repaso rapido</p>
+              </div>
+              <button onclick="window.print()">Guardar / imprimir PDF</button>
+            </header>
+            <section class="formula-grid">${formulasMarkup}</section>
+            <section class="constants">${constantsMarkup}</section>
+          </main>
+        </body>
+      </html>
+    `)
+    printWindow.document.close()
+    printWindow.focus()
+    window.setTimeout(() => {
+      printWindow.print()
+    }, 250)
+  }
+
+  function openEbauPackDownloadPage() {
+    const packWindow = window.open('', '_blank', 'width=860,height=720')
+
+    if (!packWindow) {
+      return
+    }
+
+    const linksMarkup = practicePdfBanks
+      .map((bank) => `
+        <article class="pack-card">
+          <div>
+            <h2>${escapeHtml(bank.title)}</h2>
+            <p>${escapeHtml(bank.note)}</p>
+            <small>${escapeHtml(bank.path)}</small>
+          </div>
+          <a href="${bank.url}" download>Descargar PDF</a>
+        </article>
+      `)
+      .join('')
+
+    packWindow.document.write(`
+      <!doctype html>
+      <html lang="es">
+        <head>
+          <meta charset="utf-8" />
+          <title>Pack EBAU completo</title>
+          <style>
+            * { box-sizing: border-box; }
+            body {
+              margin: 0;
+              min-height: 100vh;
+              padding: 28px;
+              color: #f7fbff;
+              font-family: Arial, Helvetica, sans-serif;
+              background:
+                radial-gradient(circle at 12% 12%, rgba(255, 207, 69, 0.22), transparent 24%),
+                radial-gradient(circle at 88% 10%, rgba(83, 210, 255, 0.2), transparent 22%),
+                linear-gradient(180deg, #11233f, #050c1d);
+            }
+            h1 {
+              margin: 0 0 8px;
+              color: #fff06a;
+              font-size: 34px;
+              text-transform: uppercase;
+            }
+            .subtitle {
+              margin: 0 0 22px;
+              color: rgba(247, 251, 255, 0.76);
+            }
+            .pack-list {
+              display: grid;
+              gap: 12px;
+            }
+            .pack-card {
+              display: flex;
+              justify-content: space-between;
+              gap: 18px;
+              align-items: center;
+              padding: 16px;
+              border: 1px solid rgba(83, 210, 255, 0.28);
+              background: rgba(255, 255, 255, 0.07);
+            }
+            .pack-card h2 {
+              margin: 0;
+              font-size: 18px;
+            }
+            .pack-card p {
+              margin: 6px 0;
+              color: rgba(247, 251, 255, 0.78);
+            }
+            .pack-card small {
+              color: rgba(247, 251, 255, 0.48);
+            }
+            .pack-card a {
+              flex: 0 0 auto;
+              padding: 12px 16px;
+              color: #10141d;
+              background: linear-gradient(90deg, #fff06a, #53d2ff);
+              text-decoration: none;
+              font-weight: 800;
+              text-transform: uppercase;
+            }
+          </style>
+        </head>
+        <body>
+          <h1>Pack EBAU completo</h1>
+          <p class="subtitle">Descarga los bancos PAU/EBAU por bloques. Si el navegador bloquea alguna descarga, abre cada PDF con su botón.</p>
+          <section class="pack-list">${linksMarkup}</section>
+        </body>
+      </html>
+    `)
+    packWindow.document.close()
+    packWindow.focus()
+  }
+
   function openSearchResult(result: SearchResult) {
     if (result.kind === 'simulacion') {
       if (result.simulationId) {
@@ -1861,6 +2159,19 @@ function App() {
               {mainViewLabels[view]}
             </button>
           ))}
+          <button
+            className={`top-menu-constants-toggle ${isConstantsPanelOpen ? 'top-menu-constants-toggle-active' : ''}`}
+            type="button"
+            onClick={() => {
+              setIsConstantsPanelOpen((currentValue) => !currentValue)
+              setIsSearchOpen(false)
+            }}
+            aria-pressed={isConstantsPanelOpen}
+            aria-label="Abrir panel de constantes"
+            title="Constantes universales"
+          >
+            K
+          </button>
           <button
             className="top-menu-tab top-menu-theme-toggle"
             type="button"
@@ -1969,6 +2280,36 @@ function App() {
         </div>
       </div>
 
+      {isConstantsPanelOpen ? (
+        <aside className="constants-panel" aria-label="Panel rápido de constantes universales">
+          <div className="constants-panel-head">
+            <div>
+              <p className="panel-label">Panel rápido</p>
+              <h2>Constantes</h2>
+            </div>
+            <button
+              className="constants-panel-close"
+              type="button"
+              onClick={() => setIsConstantsPanelOpen(false)}
+              aria-label="Cerrar constantes"
+            >
+              x
+            </button>
+          </div>
+          <div className="constants-grid">
+            {universalConstants.map((constant) => (
+              <article className="constant-card" key={constant.symbol}>
+                <strong>{constant.symbol}</strong>
+                <div>
+                  <span>{constant.name}</span>
+                  <p>{constant.value} {constant.unit}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </aside>
+      ) : null}
+
       {activeView === 'estudio' ? (
         <section className="study-quote-box" aria-label="Cita inspiradora de estudio">
           <div className="study-quote-copy">
@@ -2076,15 +2417,24 @@ function App() {
       ) : null}
 
       {activeView === 'resumen' ? (
-        <section className="card">
-          <div className="section-heading">
-            <p className="eyebrow">Índice por tema</p>
-            <h2>Teoría, fórmulas y práctica disponibles</h2>
+        <section className="card cheat-page">
+          <div className="section-heading cheat-heading">
+            <div>
+              <p className="eyebrow">Descargas rápidas</p>
+              <h2>CHULETAS</h2>
+            </div>
+            <button
+              className="ebau-pack-button"
+              type="button"
+              onClick={openEbauPackDownloadPage}
+            >
+              Descargar pack EBAU completo
+            </button>
           </div>
-          <div className="module-grid">
+          <div className="module-grid cheat-grid">
             {indexModules.map((module) => (
               <article
-                className={`module-card ${selectedTopicId === module.id ? 'module-card-active' : ''}`}
+                className="module-card cheat-card"
                 key={module.id}
               >
                 <div className="module-head">
@@ -2096,48 +2446,40 @@ function App() {
                   </span>
                 </div>
                 <p className="module-points-label">Puntos importantes del temario</p>
-                {module.id === '01-ondas' ? (
-                  (() => {
-                    const splitHighlights = splitHighlightedTopics(module.highlights)
-
-                    return (
-                      <div className="topic-columns">
-                        <section className="topic-column-card">
-                          <h4>Problemas</h4>
-                          <ul className="topic-column-list">
-                            {splitHighlights.problems.map((highlight) => (
-                              <li key={highlight}>{highlight}</li>
-                            ))}
-                          </ul>
-                        </section>
-                        <section className="topic-column-card">
-                          <h4>Teoría</h4>
-                          <ul className="topic-column-list">
-                            {splitHighlights.theory.map((highlight) => (
-                              <li key={highlight}>{highlight}</li>
-                            ))}
-                          </ul>
-                        </section>
-                      </div>
-                    )
-                  })()
-                ) : (
-                  <ul className="tag-list">
-                    {module.highlights.map((highlight) => (
-                      <li key={highlight}>{highlight}</li>
-                    ))}
-                  </ul>
-                )}
-                <button
-                  className="module-action"
-                  type="button"
-                  onClick={() => {
-                    openTopic(module.id)
-                    setActiveView('estudio')
-                  }}
-                >
-                  Abrir ficha
-                </button>
+                <ul className="tag-list cheat-chip-list">
+                  {module.highlights.map((highlight) => (
+                    <li key={highlight}>{highlight}</li>
+                  ))}
+                </ul>
+                <div className="cheat-actions" aria-label={`Descargas de ${module.title}`}>
+                  <div className="cheat-download-option">
+                    <button
+                      className="cheat-download-button"
+                      type="button"
+                      onClick={() => printFormulaCheatSheet(module.id)}
+                    >
+                      <span aria-hidden="true">📄</span>
+                      Fórmulas
+                    </button>
+                    <small>{getDownloadMeta(module.id, 'formulas')}</small>
+                  </div>
+                  <div className="cheat-download-option">
+                    <button
+                      className="cheat-download-button cheat-download-button-theory"
+                      type="button"
+                      onClick={() => {
+                        openTopic(module.id)
+                        setSelectedFilter('teoria')
+                        setStudyPanelsForFilter('teoria')
+                        setActiveView('estudio')
+                      }}
+                    >
+                      <span aria-hidden="true">📝</span>
+                      Teoría
+                    </button>
+                    <small>{getDownloadMeta(module.id, 'teoria')}</small>
+                  </div>
+                </div>
               </article>
             ))}
           </div>
@@ -2372,6 +2714,26 @@ function App() {
                 ))}
               </div>
             </div>
+            <div className="practice-mode-switch">
+              <button
+                className={`practice-mode-tab ${!isFlashcardMode ? 'practice-mode-tab-active' : ''}`}
+                type="button"
+                onClick={() => setIsFlashcardMode(false)}
+              >
+                Problemas guiados
+              </button>
+              <button
+                className={`practice-mode-tab ${isFlashcardMode ? 'practice-mode-tab-active' : ''}`}
+                type="button"
+                onClick={() => {
+                  setIsFlashcardMode(true)
+                  setIsFlashcardRevealed(false)
+                }}
+              >
+                Fórmula rápida
+              </button>
+            </div>
+            {!isFlashcardMode ? (
             <div className="practice-control-row">
               <div className="practice-control-group">
                 <span className="panel-label">Cola</span>
@@ -2411,9 +2773,47 @@ function App() {
                 </div>
               </div>
             </div>
+            ) : null}
           </div>
 
-          {activePracticeExercise ? (
+          {isFlashcardMode ? (
+            <div className="flashcard-practice-layout">
+              <article className={`flashcard-card ${isFlashcardRevealed ? 'flashcard-card-revealed' : ''}`}>
+                <span className="panel-label">
+                  Flashcard {flashcardIndex + 1} de {flashcardFormulas.length || 1}
+                </span>
+                {activeFlashcardFormula ? (
+                  <>
+                    <div className="flashcard-face">
+                      <p className="flashcard-kicker">Adivina la fórmula</p>
+                      <h3>{activeFlashcardFormula.label}</h3>
+                      {isFlashcardRevealed ? (
+                        <div className="flashcard-answer">
+                          <span className="panel-label">Respuesta</span>
+                          <MathFormula latex={activeFlashcardFormula.latex} />
+                        </div>
+                      ) : (
+                        <p className="flashcard-placeholder">Escríbela mentalmente antes de girar la tarjeta.</p>
+                      )}
+                    </div>
+                    <div className="practice-actions">
+                      <button className="practice-button practice-button-muted" type="button" onClick={() => goToNextFlashcard('prev')}>
+                        Anterior
+                      </button>
+                      <button className="practice-button" type="button" onClick={() => setIsFlashcardRevealed((currentValue) => !currentValue)}>
+                        {isFlashcardRevealed ? 'Ocultar' : 'Girar'}
+                      </button>
+                      <button className="practice-button practice-button-muted" type="button" onClick={() => goToNextFlashcard('next')}>
+                        Siguiente
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <p>Este tema aún no tiene fórmulas cargadas para practicar con flashcards.</p>
+                )}
+              </article>
+            </div>
+          ) : activePracticeExercise ? (
             <div className="practice-layout">
               <article className="practice-card featured-practice-card">
                 <span className="panel-label">
@@ -2455,16 +2855,27 @@ function App() {
                 <p>{selectedModule.goal}</p>
                 <div className="practice-hint-box">
                   <button
-                    className={`practice-hint-toggle ${isPracticeHintOpen ? 'practice-hint-toggle-open' : ''}`}
+                    className={`practice-hint-toggle practice-spider-sense-toggle ${isPracticeHintOpen ? 'practice-hint-toggle-open' : ''}`}
                     type="button"
                     onClick={() => setIsPracticeHintOpen((currentValue) => !currentValue)}
                   >
-                    <span className="panel-label">¿Necesitas una mano?</span>
+                    <span className="panel-label">
+                      <span className="spider-sense-icon" aria-hidden="true">!</span>
+                      Sentido arácnido
+                    </span>
                     <strong />
                   </button>
                   {isPracticeHintOpen ? (
                     <div className="practice-hint-content">
-                      <strong className="practice-rich-text">{renderTextWithMath(activePracticeExercise.hint)}</strong>
+                      <span className="panel-label">Primer paso matemático</span>
+                      {activePracticeFormula ? (
+                        <div className="practice-first-step">
+                          <p>Empieza eligiendo esta relación y despejando la magnitud que te piden.</p>
+                          <MathFormula latex={activePracticeFormula.latex} />
+                        </div>
+                      ) : (
+                        <strong className="practice-rich-text">{renderTextWithMath(activePracticeExercise.hint)}</strong>
+                      )}
                     </div>
                   ) : null}
                 </div>
