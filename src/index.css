@@ -1556,18 +1556,75 @@ body.body-bg-ink-dark .study-quote-box {
   padding-left: 18px;
 }
 
-.home-physicists {
+.home-physicists-shell {
   grid-area: physicists;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  position: relative;
+  min-width: 0;
   align-self: end;
 }
 
+.home-physicists {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding: 4px 56px 8px;
+}
+
+.home-physicists::-webkit-scrollbar {
+  display: none;
+}
+
 .home-physicist-card {
+  flex: 0 0 280px;
   margin: 0;
   min-height: 268px;
   clip-path: polygon(0 0, 100% 0, 100% 88%, 94% 100%, 0 100%);
+}
+
+.home-carousel-button {
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 72px;
+  border: 1px solid rgba(83, 210, 255, 0.22);
+  background:
+    linear-gradient(180deg, rgba(8, 16, 30, 0.78), rgba(4, 8, 18, 0.92));
+  color: #f7fbff;
+  cursor: pointer;
+  font-family: 'Stark', 'Calculator', 'Coalition', 'Avenir Next', 'Segoe UI', sans-serif;
+  font-size: 1.5rem;
+  line-height: 1;
+  transform: translateY(-50%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 18px 30px rgba(0, 0, 0, 0.34);
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease, box-shadow 160ms ease, color 160ms ease;
+}
+
+.home-carousel-button-left {
+  left: 0;
+}
+
+.home-carousel-button-right {
+  right: 0;
+}
+
+.home-carousel-button:hover,
+.home-carousel-button:focus-visible {
+  transform: translateY(-50%) scale(1.04);
+  border-color: rgba(83, 210, 255, 0.58);
+  background:
+    linear-gradient(180deg, rgba(83, 210, 255, 0.28), rgba(8, 16, 30, 0.94));
+  color: #fff06a;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 0 24px rgba(83, 210, 255, 0.24),
+    0 18px 30px rgba(0, 0, 0, 0.38);
 }
 
 .home-physicist-card img {
@@ -1575,8 +1632,8 @@ body.body-bg-ink-dark .study-quote-box {
   width: 100%;
   height: 220px;
   padding: 10px 10px 0;
-  object-fit: contain;
-  object-position: center center;
+  object-fit: cover;
+  object-position: center 20%;
   background:
     radial-gradient(circle at 50% 16%, rgba(55, 198, 255, 0.16), transparent 34%),
     linear-gradient(180deg, rgba(21, 28, 40, 0.96), rgba(10, 14, 22, 0.96));
@@ -4951,7 +5008,11 @@ body.body-bg-ink-dark .study-quote-box {
   }
 
   .home-physicists {
-    grid-template-columns: 1fr;
+    padding-inline: 50px;
+  }
+
+  .home-physicist-card {
+    flex-basis: min(280px, calc(100vw - 140px));
   }
 
   .home-study-cta {

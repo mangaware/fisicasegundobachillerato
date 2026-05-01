@@ -1,4 +1,4 @@
-import { Fragment, useDeferredValue, useEffect, useMemo, useState } from 'react'
+import { Fragment, useDeferredValue, useEffect, useMemo, useRef, useState } from 'react'
 import katex from 'katex'
 import katexStyles from 'katex/dist/katex.min.css?raw'
 import MathFormula from './components/MathFormula'
@@ -17,6 +17,8 @@ import campoMagneticoPauPdf from '../content/apuntes/05-campo-magnetico/enunciad
 import opticaPauPdf from '../content/apuntes/08-optica-fisica/enunciado.pdf?url'
 import fisicaSigloXxPauPdf from '../content/apuntes/11-fisica-cuantica/enunciado-5.pdf?url'
 import teoriaOndasPdf from '../content/PDFS TEORIA/teoria-ondas.pdf?url'
+import teoriaGravitacionPdf from '../content/PDFS TEORIA/teoria-gravitacion.pdf?url'
+import teoriaCampoElectricoPdf from '../content/PDFS TEORIA/teoria-campo-electrico.pdf?url'
 
 const coverageTone: Record<'alta' | 'media' | 'baja', string> = {
   alta: 'coverage-high',
@@ -78,25 +80,104 @@ const universalConstants = [
 const theoryPdfDownloads: Partial<Record<string, string>> = {
   '01-ondas': teoriaOndasPdf,
   '02-sonido': teoriaOndasPdf,
+  '03-gravitacion': teoriaGravitacionPdf,
+  '04-campo-electrico': teoriaCampoElectricoPdf,
 }
 
 const homePhysicists = [
   {
+    name: 'Willebrord Snell',
+    role: 'Refracción',
+    image: '/fonts/snell.jpg',
+    imagePosition: 'center 18%',
+  },
+  {
+    name: 'Christiaan Huygens',
+    role: 'Ondas',
+    image: '/fonts/Christiaan_Huygens.jpg.webp',
+    imagePosition: 'center 18%',
+  },
+  {
+    name: 'Isaac Newton',
+    role: 'LGU',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/GodfreyKneller-IsaacNewton-1689.jpg/250px-GodfreyKneller-IsaacNewton-1689.jpg',
+    imagePosition: 'center 18%',
+  },
+  {
+    name: 'Johannes Kepler',
+    role: 'Órbitas',
+    image: '/fonts/cfaf79_da62a84fe3a2436888a98195afb90437~mv2_d_1500_2060_s_2.jpg.avif',
+    imagePosition: 'center 16%',
+  },
+  {
+    name: 'Charles-Augustin de Coulomb',
+    role: 'Campo eléctrico',
+    image: '/fonts/1coulomb.jpg',
+    imagePosition: 'center 20%',
+  },
+  {
+    name: 'Nikola Tesla',
+    role: 'Electromagnetismo',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/N.Tesla.JPG/250px-N.Tesla.JPG',
+    imagePosition: 'center 14%',
+  },
+  {
+    name: 'Hendrik Lorentz',
+    role: 'Electromagnetismo',
+    image: '/fonts/Hendrik_Antoon_Lorentz.jpg',
+    imagePosition: 'center 16%',
+  },
+  {
+    name: 'Michael Faraday',
+    role: 'Inducción',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/M_Faraday_Th_Phillips_oil_1842.jpg/250px-M_Faraday_Th_Phillips_oil_1842.jpg',
+    imagePosition: 'center 18%',
+  },
+  {
     name: 'Albert Einstein',
     role: 'Relatividad',
     image: 'https://upload.wikimedia.org/wikipedia/commons/d/d3/Albert_Einstein_Head.jpg',
+    imagePosition: 'center 26%',
   },
   {
-    name: 'Marie Curie',
-    role: 'Radiactividad',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Marie_Curie_c._1920s.jpg/250px-Marie_Curie_c._1920s.jpg',
+    name: 'Niels Bohr',
+    role: 'Modelo atómico',
+    image: '/fonts/bohr_niels_1.jpg',
+    imagePosition: 'center 22%',
   },
   {
     name: 'Max Planck',
     role: 'Teoría cuántica',
     image: 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Max_Planck_1933.jpg',
+    imagePosition: 'center 28%',
   },
-] as const
+  {
+    name: 'Louis de Broglie',
+    role: 'Dualidad onda-partícula',
+    image: '/fonts/Broglie.jpg.webp',
+    imagePosition: 'center 20%',
+  },
+  {
+    name: 'Werner Heisenberg',
+    role: 'Indeterminación',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Bundesarchiv_Bild183-R57262%2C_Werner_Heisenberg.jpg/250px-Bundesarchiv_Bild183-R57262%2C_Werner_Heisenberg.jpg',
+    imagePosition: 'center 16%',
+  },
+  {
+    name: 'Marie Curie',
+    role: 'Radiactividad',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Marie_Curie_c._1920s.jpg/250px-Marie_Curie_c._1920s.jpg',
+    imagePosition: 'center 20%',
+  },
+] as const satisfies ReadonlyArray<{
+  name: string
+  role: string
+  image: string
+  imagePosition: string
+}>
+
+const scientistImageFallback =
+  'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 220"%3E%3Crect width="280" height="220" fill="%23111824"/%3E%3Cpath d="M95 166c7-30 83-30 90 0" fill="none" stroke="%2353d2ff" stroke-width="8" stroke-linecap="round"/%3E%3Ccircle cx="140" cy="92" r="38" fill="%23202b3f" stroke="%23ffcf45" stroke-width="6"/%3E%3Ctext x="140" y="196" text-anchor="middle" fill="%23c1d8ff" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700"%3EF%C3%8DSICA%3C/text%3E%3C/svg%3E'
 
 const homeStudySuggestions = [
   'Empieza por Estudio para repasar teoría y fórmulas del tema que estés trabajando.',
@@ -967,6 +1048,7 @@ function formatSimulationNumber(value: number, digits = 2) {
 }
 
 function App() {
+  const homePhysicistsCarouselRef = useRef<HTMLDivElement | null>(null)
   const [activeView, setActiveView] = useState<MainView>('inicio')
   const [selectedTopicId, setSelectedTopicId] = useState(studyModules[0]?.id ?? '')
   const [selectedFilter, setSelectedFilter] = useState<ContentFilter>('todo')
@@ -1890,7 +1972,7 @@ function App() {
       <html lang="es">
         <head>
           <meta charset="utf-8" />
-          <title>Chuleta de formulas - ${escapeHtml(module.title)}</title>
+          <title>Chuleta de fórmulas - ${escapeHtml(module.title)}</title>
           <style>
             ${katexStyles}
             @page { size: A4; margin: 12mm; }
@@ -1976,7 +2058,7 @@ function App() {
             <header>
               <div>
                 <h1>${escapeHtml(module.title)}</h1>
-                <p class="subtitle">Chuleta de formulas de una cara para repaso rapido</p>
+                <p class="subtitle">Chuleta de fórmulas de una cara para repaso rápido</p>
               </div>
               <button onclick="window.print()">Guardar / imprimir PDF</button>
             </header>
@@ -2151,10 +2233,30 @@ function App() {
     setActiveView('simulacros')
   }
 
+  function scrollHomePhysicists(direction: 'left' | 'right') {
+    const container = homePhysicistsCarouselRef.current
+
+    if (!container) {
+      return
+    }
+
+    const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 10
+
+    if (direction === 'right' && isAtEnd) {
+      container.scrollTo({ left: 0, behavior: 'smooth' })
+      return
+    }
+
+    container.scrollBy({
+      left: direction === 'right' ? 350 : -350,
+      behavior: 'smooth',
+    })
+  }
+
   return (
     <main className="app-shell">
       <div className="top-bar">
-        <nav className="top-menu" aria-label="Menu principal">
+        <nav className="top-menu" aria-label="Menú principal">
           {mainViewOrder.map((view) => (
             <button
               key={view}
@@ -2205,7 +2307,7 @@ function App() {
           <img
             className="menu-spider-figure"
             src="/fonts/Hanging Spider-Man.png"
-            alt="Figura de Spider-Man colgando de la barra de menu"
+            alt="Figura de Spider-Man colgando de la barra de menú"
           />
         </button>
 
@@ -2241,7 +2343,7 @@ function App() {
             }
           }}
         >
-          <button className="search-toggle" type="button" aria-label="Buscar conceptos o formulas">
+          <button className="search-toggle" type="button" aria-label="Buscar conceptos o fórmulas">
             🔍
           </button>
           <div className="search-panel">
@@ -2250,12 +2352,12 @@ function App() {
               type="search"
               value={searchQuery}
               onChange={(event) => setSearchQuery(event.target.value)}
-              placeholder="Buscar conceptos o formulas"
-              aria-label="Buscar conceptos o formulas"
+              placeholder="Buscar conceptos o fórmulas"
+              aria-label="Buscar conceptos o fórmulas"
             />
 
             {searchQuery.trim() ? (
-              <div className="search-results" role="listbox" aria-label="Resultados de busqueda">
+              <div className="search-results" role="listbox" aria-label="Resultados de búsqueda">
                 {searchResults.length > 0 ? (
                   searchResults.map((result) => (
                     <button
@@ -2275,12 +2377,12 @@ function App() {
                 ) : (
                   <div className="search-empty-state">
                     <strong>Sin coincidencias</strong>
-                    <p>Prueba con otra palabra clave o una formula mas corta.</p>
+                    <p>Prueba con otra palabra clave o una fórmula más corta.</p>
                   </div>
                 )}
               </div>
             ) : (
-              <div className="search-hint">Busca por concepto, tema o formula.</div>
+              <div className="search-hint">Busca por concepto, tema o fórmula.</div>
             )}
           </div>
         </div>
@@ -2407,16 +2509,43 @@ function App() {
               </article>
             </aside>
 
-            <div className="home-physicists" aria-label="Físicos destacados">
-              {homePhysicists.map((physicist) => (
-                <figure className="home-physicist-card" key={physicist.name}>
-                  <img src={physicist.image} alt={`Retrato de ${physicist.name}`} />
-                  <figcaption>
-                    <span>{physicist.role}</span>
-                    <strong>{physicist.name}</strong>
-                  </figcaption>
-                </figure>
-              ))}
+            <div className="home-physicists-shell" aria-label="Físicos destacados">
+              <button
+                className="home-carousel-button home-carousel-button-left"
+                type="button"
+                aria-label="Ver científicos anteriores"
+                onClick={() => scrollHomePhysicists('left')}
+              >
+                &lt;
+              </button>
+              <div className="home-physicists" ref={homePhysicistsCarouselRef}>
+                {homePhysicists.map((physicist) => (
+                  <figure className="home-physicist-card" key={physicist.name}>
+                    <img
+                      src={physicist.image}
+                      alt={`Retrato de ${physicist.name}`}
+                      style={{
+                        objectPosition: physicist.imagePosition,
+                      }}
+                      onError={(event) => {
+                        event.currentTarget.src = scientistImageFallback
+                      }}
+                    />
+                    <figcaption>
+                      <span>{physicist.role}</span>
+                      <strong>{physicist.name}</strong>
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+              <button
+                className="home-carousel-button home-carousel-button-right"
+                type="button"
+                aria-label="Ver más científicos"
+                onClick={() => scrollHomePhysicists('right')}
+              >
+                &gt;
+              </button>
             </div>
           </section>
         </>
