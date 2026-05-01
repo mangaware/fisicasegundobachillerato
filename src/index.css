@@ -2078,6 +2078,7 @@ body.body-bg-ink-dark .study-quote-box {
     rgba(8, 14, 23, 0.68);
   color: #f7fbff;
   cursor: pointer;
+  text-decoration: none;
   font-family: 'Stark', 'Calculator', 'Coalition', 'Avenir Next', 'Segoe UI', sans-serif;
   font-size: 0.9rem;
   letter-spacing: 0.03em;

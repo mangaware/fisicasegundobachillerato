@@ -16,6 +16,7 @@ import campoElectricoPauPdf from '../content/apuntes/04-campo-electrico/enunciad
 import campoMagneticoPauPdf from '../content/apuntes/05-campo-magnetico/enunciado-4.pdf?url'
 import opticaPauPdf from '../content/apuntes/08-optica-fisica/enunciado.pdf?url'
 import fisicaSigloXxPauPdf from '../content/apuntes/11-fisica-cuantica/enunciado-5.pdf?url'
+import teoriaOndasPdf from '../content/PDFS TEORIA/teoria-ondas.pdf?url'
 
 const coverageTone: Record<'alta' | 'media' | 'baja', string> = {
   alta: 'coverage-high',
@@ -73,6 +74,11 @@ const universalConstants = [
   { symbol: 'u', name: 'Unidad de masa atómica', value: '1,66 x 10^-27', unit: 'kg' },
   { symbol: 'g', name: 'Gravedad en la Tierra', value: '9,8', unit: 'm s^-2' },
 ] as const
+
+const theoryPdfDownloads: Partial<Record<string, string>> = {
+  '01-ondas': teoriaOndasPdf,
+  '02-sonido': teoriaOndasPdf,
+}
 
 const homePhysicists = [
   {
@@ -2464,19 +2470,30 @@ function App() {
                     <small>{getDownloadMeta(module.id, 'formulas')}</small>
                   </div>
                   <div className="cheat-download-option">
-                    <button
-                      className="cheat-download-button cheat-download-button-theory"
-                      type="button"
-                      onClick={() => {
-                        openTopic(module.id)
-                        setSelectedFilter('teoria')
-                        setStudyPanelsForFilter('teoria')
-                        setActiveView('estudio')
-                      }}
-                    >
-                      <span aria-hidden="true">📝</span>
-                      Teoría
-                    </button>
+                    {theoryPdfDownloads[module.id] ? (
+                      <a
+                        className="cheat-download-button cheat-download-button-theory"
+                        href={theoryPdfDownloads[module.id]}
+                        download
+                      >
+                        <span aria-hidden="true">📝</span>
+                        Teoría
+                      </a>
+                    ) : (
+                      <button
+                        className="cheat-download-button cheat-download-button-theory"
+                        type="button"
+                        onClick={() => {
+                          openTopic(module.id)
+                          setSelectedFilter('teoria')
+                          setStudyPanelsForFilter('teoria')
+                          setActiveView('estudio')
+                        }}
+                      >
+                        <span aria-hidden="true">📝</span>
+                        Teoría
+                      </button>
+                    )}
                     <small>{getDownloadMeta(module.id, 'teoria')}</small>
                   </div>
                 </div>
