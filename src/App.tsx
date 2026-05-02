@@ -1064,6 +1064,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('')
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [isConstantsPanelOpen, setIsConstantsPanelOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [visualTheme, setVisualTheme] = useState<VisualTheme>('dark')
   const [spiderMenuState, setSpiderMenuState] = useState<SpiderMenuState>('idle')
   const [windowScrollY, setWindowScrollY] = useState(0)
@@ -1240,6 +1241,26 @@ function App() {
       document.body.classList.remove('body-bg-steel-light', 'body-bg-cinematic-blue', 'body-bg-steel-dark', 'body-bg-ink-dark')
     }
   }, [visualTheme])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
+    const syncMobileLayout = () => {
+      if (window.innerWidth <= 768) {
+        setIsStudySidebarHidden(true)
+        setIsMobileMenuOpen(false)
+      }
+    }
+
+    syncMobileLayout()
+    window.addEventListener('resize', syncMobileLayout)
+
+    return () => {
+      window.removeEventListener('resize', syncMobileLayout)
+    }
+  }, [])
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -2125,6 +2146,7 @@ function App() {
   function selectMainView(view: MainView) {
     setActiveView(view)
     setIsSearchOpen(false)
+    setIsMobileMenuOpen(false)
   }
 
   function toggleVisualTheme() {
@@ -2168,7 +2190,18 @@ function App() {
   return (
     <main className="app-shell">
       <div className="top-bar">
-        <nav className="top-menu" aria-label="Menú principal">
+        <button
+          className={`mobile-menu-toggle ${isMobileMenuOpen ? 'mobile-menu-toggle-open' : ''}`}
+          type="button"
+          aria-label={isMobileMenuOpen ? 'Cerrar menú principal' : 'Abrir menú principal'}
+          aria-expanded={isMobileMenuOpen}
+          onClick={() => setIsMobileMenuOpen((currentValue) => !currentValue)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <nav className={`top-menu ${isMobileMenuOpen ? 'top-menu-mobile-open' : ''}`} aria-label="Menú principal">
           {mainViewOrder.map((view) => (
             <button
               key={view}
