@@ -433,8 +433,8 @@ function renderQuestionOptions({
         {question.options.map((option, index) => {
           const optionLetter = String.fromCharCode(65 + index)
           const isSelected = answers[question.exerciseId] === option.id
-          const isCorrect = correction && correction[question.exerciseId] && option.id === question.correctOptionId
-          const isWrong = correction && correction[question.exerciseId] === false && isSelected
+          const isCorrect = !!correction && option.id === question.correctOptionId
+          const isWrong = !!correction && correction[question.exerciseId] === false && isSelected
 
           return (
             <button
@@ -524,7 +524,6 @@ function MockExamView({
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [selectedOptionalExerciseIds, setSelectedOptionalExerciseIds] = useState<Record<string, string>>({})
   const [correction, setCorrection] = useState<Record<string, boolean> | null>(null)
-  const [openHintByExerciseId, setOpenHintByExerciseId] = useState<Record<string, boolean>>({})
   const [examDurationMinutes, setExamDurationMinutes] = useState(defaultExamDurationMinutes)
   const [secondsRemaining, setSecondsRemaining] = useState(defaultExamDurationMinutes * 60)
   const [isTimerRunning, setIsTimerRunning] = useState(false)
@@ -593,13 +592,13 @@ function MockExamView({
     : []
   const weakTopicTitles = Array.from(new Set(weakExamItems.map((item) => item.exercise.topicTitle)))
   const allQuestionsAnswered = totalQuestionCount > 0 && answeredCount === totalQuestionCount
+  const isTimeExpired = secondsRemaining === 0 && !correction
 
   useEffect(() => {
     setAttempt(0)
     setAnswers({})
     setSelectedOptionalExerciseIds({})
     setCorrection(null)
-    setOpenHintByExerciseId({})
     setSecondsRemaining(examDurationMinutes * 60)
     setIsTimerRunning(false)
   }, [selectedBlockId])
@@ -613,7 +612,7 @@ function MockExamView({
       setSecondsRemaining((currentSeconds) => {
         if (currentSeconds <= 1) {
           window.clearInterval(timerId)
-          correctMockExam()
+          setIsTimerRunning(false)
           return 0
         }
 
@@ -622,7 +621,7 @@ function MockExamView({
     }, 1000)
 
     return () => window.clearInterval(timerId)
-  }, [answers, correction, isTimerRunning, mockExam, selectedOptionalQuestions])
+  }, [correction, isTimerRunning, mockExam])
 
   function handleSelectBlock(blockId: string) {
     onSelectBlock(blockId)
@@ -630,13 +629,6 @@ function MockExamView({
 
   function handleAnswer(exerciseId: string, optionId: string) {
     setAnswers((currentAnswers) => ({ ...currentAnswers, [exerciseId]: optionId }))
-  }
-
-  function toggleHint(exerciseId: string) {
-    setOpenHintByExerciseId((currentHints) => ({
-      ...currentHints,
-      [exerciseId]: !currentHints[exerciseId],
-    }))
   }
 
   function handleOptionalChoice(blockId: string, exerciseId: string) {
@@ -684,7 +676,6 @@ function MockExamView({
     setAnswers({})
     setSelectedOptionalExerciseIds({})
     setCorrection(null)
-    setOpenHintByExerciseId({})
     setSecondsRemaining(examDurationMinutes * 60)
     setIsTimerRunning(false)
   }
@@ -713,7 +704,7 @@ function MockExamView({
       {mockExam ? (
         <form className="pau-simulacro-form" onSubmit={(event) => { event.preventDefault(); correctMockExam() }}>
           <div className="mock-exam-control-panel" aria-label="Panel de control del simulacro">
-            <div className={`mock-exam-timer ${secondsRemaining <= 300 && !correction ? 'mock-exam-timer-warning' : ''}`}>
+            <div className={`mock-exam-timer ${secondsRemaining <= 300 && !correction ? 'mock-exam-timer-warning' : ''} ${isTimeExpired ? 'mock-exam-timer-expired' : ''}`}>
               <span className="panel-label">Tiempo restante</span>
               <strong>{formatExamTime(secondsRemaining)}</strong>
               <button
@@ -722,7 +713,7 @@ function MockExamView({
                 onClick={toggleTimer}
                 disabled={!!correction || secondsRemaining === 0}
               >
-                {isTimerRunning ? 'Pausar tiempo' : secondsRemaining < examDurationMinutes * 60 ? 'Reanudar tiempo' : 'Iniciar tiempo'}
+                {isTimerRunning ? 'Pausar tiempo' : secondsRemaining === 0 ? 'Tiempo agotado' : secondsRemaining < examDurationMinutes * 60 ? 'Reanudar tiempo' : 'Iniciar tiempo'}
               </button>
             </div>
             <div className="mock-exam-progress">
@@ -757,21 +748,6 @@ function MockExamView({
                 {mockExam.obligatory.topicTitle} · {mockExam.obligatory.exercises[0].source} · dificultad {mockExam.obligatory.exercises[0].difficulty}
               </p>
               <p className="practice-rich-text">{renderTextWithMath(mockExam.obligatory.exercises[0].prompt)}</p>
-              <div className="practice-hint-box">
-                <button
-                  className={`practice-hint-toggle ${openHintByExerciseId[mockExam.obligatory.exercises[0].id] ? 'practice-hint-toggle-open' : ''}`}
-                  type="button"
-                  onClick={() => toggleHint(mockExam.obligatory.exercises[0].id)}
-                >
-                  <span className="panel-label">¿Necesitas una mano?</span>
-                  <strong />
-                </button>
-                {openHintByExerciseId[mockExam.obligatory.exercises[0].id] ? (
-                  <div className="practice-hint-content">
-                    <strong className="practice-rich-text">{renderTextWithMath(mockExam.obligatory.exercises[0].hint)}</strong>
-                  </div>
-                ) : null}
-              </div>
               {(() => {
                 const question = buildMockExamQuestion(mockExam.obligatory.exercises[0])
 
@@ -824,21 +800,6 @@ function MockExamView({
                         {selectedExercise.source} · dificultad {selectedExercise.difficulty}
                       </p>
                       <p className="practice-rich-text">{renderTextWithMath(selectedExercise.prompt)}</p>
-                      <div className="practice-hint-box">
-                        <button
-                          className={`practice-hint-toggle ${openHintByExerciseId[selectedExercise.id] ? 'practice-hint-toggle-open' : ''}`}
-                          type="button"
-                          onClick={() => toggleHint(selectedExercise.id)}
-                        >
-                          <span className="panel-label">¿Necesitas una mano?</span>
-                          <strong />
-                        </button>
-                        {openHintByExerciseId[selectedExercise.id] ? (
-                          <div className="practice-hint-content">
-                            <strong className="practice-rich-text">{renderTextWithMath(selectedExercise.hint)}</strong>
-                          </div>
-                        ) : null}
-                      </div>
                       <p className="mock-exam-quiz-question practice-rich-text">{renderTextWithMath(question.prompt)}</p>
                       {renderQuestionOptions({ question, answers, correction, onAnswer: handleAnswer })}
                       {correction ? renderSolutionGuide({

@@ -47,7 +47,7 @@ type SearchResult = {
   simulationId?: SimulationId
 }
 
-type StudyAccordionPanel = 'teoria' | 'formulas' | 'ebau' | 'problemas' | 'quick-formulas'
+type StudyPanelKind = Exclude<ContentFilter, 'todo'>
 type PracticeExercise = ExerciseEntry & {
   topicId: string
   topicTitle: string
@@ -735,7 +735,7 @@ function getSectionKind(title: string): Exclude<ContentFilter, 'todo'> | 'apoyo'
   return 'apoyo'
 }
 
-function getStudyPanelSymbol(kind: StudyAccordionPanel | 'apoyo') {
+function getStudyPanelSymbol(kind: StudyPanelKind | 'apoyo') {
   switch (kind) {
     case 'teoria':
       return 'Ω'
@@ -745,8 +745,6 @@ function getStudyPanelSymbol(kind: StudyAccordionPanel | 'apoyo') {
       return 'Δ'
     case 'problemas':
       return 'F'
-    case 'quick-formulas':
-      return '∫'
     default:
       return 'φ'
   }
@@ -1053,13 +1051,6 @@ function App() {
   const [selectedTopicId, setSelectedTopicId] = useState(studyModules[0]?.id ?? '')
   const [selectedFilter, setSelectedFilter] = useState<ContentFilter>('todo')
   const [isStudySidebarHidden, setIsStudySidebarHidden] = useState(false)
-  const [expandedStudyPanels, setExpandedStudyPanels] = useState<Record<StudyAccordionPanel, boolean>>({
-    teoria: false,
-    formulas: false,
-    ebau: false,
-    problemas: false,
-    'quick-formulas': false,
-  })
   const [searchQuery, setSearchQuery] = useState('')
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [isConstantsPanelOpen, setIsConstantsPanelOpen] = useState(false)
@@ -1083,7 +1074,7 @@ function App() {
   const [mirrorFocalLength, setMirrorFocalLength] = useState(1.6)
   const [mirrorObjectDistance, setMirrorObjectDistance] = useState(3.8)
   const [mirrorObjectHeight, setMirrorObjectHeight] = useState(1.35)
-  const [activePhetGroup, setActivePhetGroup] = useState<PhetGroup>('Ondas')
+  const [activePhetGroup, setActivePhetGroup] = useState<PhetGroup | null>(null)
   const [isPracticeHintOpen, setIsPracticeHintOpen] = useState(false)
   const [isPracticeSolutionOpen, setIsPracticeSolutionOpen] = useState(false)
   const [isFlashcardMode, setIsFlashcardMode] = useState(false)
@@ -1281,30 +1272,8 @@ function App() {
     return navigableSections.filter((section) => getSectionKind(section.title) === selectedFilter)
   }, [navigableSections, selectedFilter])
 
-  const sectionColumns = useMemo(() => {
-    const leftSections = visibleSections.filter((section) => {
-      const kind = getSectionKind(section.title)
-      return kind === 'teoria' || kind === 'ebau'
-    })
-
-    const rightSections = visibleSections.filter((section) => {
-      const kind = getSectionKind(section.title)
-      return kind === 'formulas' || kind === 'problemas' || kind === 'apoyo'
-    })
-
-    return {
-      leftSections,
-      rightSections,
-    }
-  }, [visibleSections])
-
   const problemSection = useMemo(
     () => navigableSections.find((section) => getSectionKind(section.title) === 'problemas'),
-    [navigableSections],
-  )
-
-  const ebauSection = useMemo(
-    () => navigableSections.find((section) => getSectionKind(section.title) === 'ebau'),
     [navigableSections],
   )
 
@@ -1769,13 +1738,6 @@ function App() {
   function openTopic(topicId: string) {
     setSelectedTopicId(topicId)
     setSelectedFilter('todo')
-    setExpandedStudyPanels({
-      teoria: false,
-      formulas: false,
-      ebau: false,
-      problemas: false,
-      'quick-formulas': false,
-    })
     setPracticeIndex(0)
   }
 
@@ -1789,62 +1751,9 @@ function App() {
     setIsPracticeTimerRunning(false)
   }
 
-  function setStudyPanelsForFilter(filter: ContentFilter) {
-    if (filter === 'teoria') {
-      setExpandedStudyPanels((currentPanels) => ({
-        ...currentPanels,
-        teoria: true,
-      }))
-      return
-    }
-
-    if (filter === 'formulas') {
-      setExpandedStudyPanels((currentPanels) => ({
-        ...currentPanels,
-        formulas: true,
-        'quick-formulas': true,
-      }))
-      return
-    }
-
-    if (filter === 'ebau') {
-      setExpandedStudyPanels((currentPanels) => ({
-        ...currentPanels,
-        ebau: true,
-      }))
-      return
-    }
-
-    if (filter === 'problemas') {
-      setExpandedStudyPanels((currentPanels) => ({
-        ...currentPanels,
-        problemas: true,
-      }))
-      return
-    }
-
-    if (filter === 'todo') {
-      setExpandedStudyPanels({
-        teoria: false,
-        formulas: false,
-        ebau: false,
-        problemas: false,
-        'quick-formulas': false,
-      })
-    }
-  }
-
   function changeFilter(filter: ContentFilter) {
     setSelectedFilter(filter)
-    setStudyPanelsForFilter(filter)
     setPracticeIndex(0)
-  }
-
-  function toggleStudyPanel(panel: StudyAccordionPanel) {
-    setExpandedStudyPanels((currentPanels) => ({
-      ...currentPanels,
-      [panel]: !currentPanels[panel],
-    }))
   }
 
   function selectMockBlock(blockId: string) {
@@ -2185,7 +2094,6 @@ function App() {
     setActiveView('estudio')
     setSelectedTopicId(result.topicId)
     setSelectedFilter(result.kind === 'formula' ? 'formulas' : 'todo')
-    setStudyPanelsForFilter(result.kind === 'formula' ? 'formulas' : 'todo')
     setPracticeIndex(0)
     setSearchQuery('')
     setIsSearchOpen(false)
@@ -2195,7 +2103,6 @@ function App() {
     openTopic(topicId)
     if (filter !== 'todo') {
       setSelectedFilter(filter)
-      setStudyPanelsForFilter(filter)
     }
     setActiveView('estudio')
   }
@@ -2203,11 +2110,6 @@ function App() {
   function openPracticeFromSimulation(topicId: string) {
     openTopic(topicId)
     setActiveView('practica')
-  }
-
-  function openNativeSimulation(simulationId: SimulationId) {
-    setSelectedSimulationId(simulationId)
-    setActiveView('simulaciones')
   }
 
   function selectMainView(view: MainView) {
@@ -2580,12 +2482,6 @@ function App() {
                     Cobertura {module.coverage}
                   </span>
                 </div>
-                <p className="module-points-label">Puntos importantes del temario</p>
-                <ul className="tag-list cheat-chip-list">
-                  {module.highlights.map((highlight) => (
-                    <li key={highlight}>{highlight}</li>
-                  ))}
-                </ul>
                 <div className="cheat-actions" aria-label={`Descargas de ${module.title}`}>
                   <div className="cheat-download-option">
                     <button
@@ -2615,7 +2511,6 @@ function App() {
                         onClick={() => {
                           openTopic(module.id)
                           setSelectedFilter('teoria')
-                          setStudyPanelsForFilter('teoria')
                           setActiveView('estudio')
                         }}
                       >
@@ -2704,133 +2599,92 @@ function App() {
                 </div>
               </div>
 
-              <div className="filter-bar" aria-label="Filtros de contenido">
-                {(Object.keys(filterLabels) as ContentFilter[]).map((filter) => (
+              {selectedFilter !== 'todo' ? (
+                <div className="filter-bar study-filter-bar" aria-label="Filtros de contenido">
                   <button
-                    key={filter}
-                    className={`filter-chip ${selectedFilter === filter ? 'filter-chip-active' : ''}`}
+                    className="filter-chip study-back-chip"
                     type="button"
-                    onClick={() => changeFilter(filter)}
+                    onClick={() => changeFilter('todo')}
                   >
-                    {filterLabels[filter]}
+                    ← Volver al menú
                   </button>
-                ))}
-              </div>
-
-              <div
-                className={`topic-section-grid ${selectedFilter !== 'todo' ? 'topic-section-grid-single-column' : ''}`}
-              >
-                {[sectionColumns.leftSections, sectionColumns.rightSections].map((columnSections, columnIndex) => (
-                  <div className="topic-section-column" key={`column-${columnIndex}`}>
-                    {columnSections.map((section) => {
-                  const sectionKind = getSectionKind(section.title)
-                  const collapsiblePanel =
-                    sectionKind === 'teoria' ||
-                    sectionKind === 'formulas' ||
-                    sectionKind === 'ebau' ||
-                    sectionKind === 'problemas'
-                      ? sectionKind
-                      : null
-                  const isExpanded = collapsiblePanel ? expandedStudyPanels[collapsiblePanel] : true
-                  const sectionClassName = `topic-section-card topic-section-card-${sectionKind}`
-                  const sectionTitle = getSectionTitleLabel(section.title, sectionKind)
-                  const sectionSymbol = getStudyPanelSymbol(collapsiblePanel ?? sectionKind)
-
-                  return (
-                    <section className={sectionClassName} key={section.title}>
-                      {collapsiblePanel ? (
-                        <button
-                          className={`topic-section-toggle ${isExpanded ? 'topic-section-toggle-open' : ''}`}
-                          type="button"
-                          onClick={() => toggleStudyPanel(collapsiblePanel)}
-                        >
-                          <span>{sectionTitle}</span>
-                          <strong aria-hidden="true">{sectionSymbol}</strong>
-                        </button>
-                      ) : (
-                        <h4>{sectionTitle}</h4>
-                      )}
-
-                      {isExpanded ? (
-                        <div className={`topic-section-body ${isTheorySummarySection(section.title) ? 'topic-section-body-study' : ''}`}>
-                          {isTheorySummarySection(section.title) ? (
-                            renderTheoryStudySection(section, renderTheoryText)
-                          ) : (
-                            section.paragraphs.map((paragraph) => (
-                              <p key={paragraph}>{paragraph}</p>
-                            ))
-                          )}
-                          {sectionKind === 'formulas' ? (
-                            <div
-                              className={`inline-formula-list ${selectedFilter === 'formulas' ? 'inline-formula-list-double' : ''}`}
-                            >
-                              {selectedFormulaSheet.formulas.map((formula) => (
-                                <article className="inline-formula-card" key={formula.label}>
-                                  <span className="formula-label">{formula.label}</span>
-                                  <MathFormula latex={formula.latex} />
-                                </article>
-                              ))}
-                            </div>
-                          ) : !isTheorySummarySection(section.title) && section.bullets.length > 0 ? (
-                            <ul>
-                              {section.bullets.map((bullet) => (
-                                <li key={bullet}>
-                                  {bullet}
-                                </li>
-                              ))}
-                            </ul>
-                          ) : null}
-                        </div>
-                      ) : null}
-                    </section>
-                  )
-                    })}
-                  </div>
-                ))}
-
-                {(selectedFilter === 'todo' || selectedFilter === 'formulas') ? (
-                  <section className="topic-section-card topic-section-card-quick-formulas">
+                  {(['teoria', 'formulas', 'ebau', 'problemas'] as StudyPanelKind[]).map((filter) => (
                     <button
-                      className={`formula-viewer-toggle ${expandedStudyPanels['quick-formulas'] ? 'formula-viewer-toggle-open' : ''}`}
+                      key={filter}
+                      className={`filter-chip ${selectedFilter === filter ? 'filter-chip-active' : ''}`}
                       type="button"
-                      onClick={() => toggleStudyPanel('quick-formulas')}
+                      onClick={() => changeFilter(filter)}
                     >
-                      <div className="section-heading formula-heading">
-                        <div>
-                          <p className="eyebrow">Formulario rápido</p>
-                          <h2>{selectedFormulaSheet.title}</h2>
-                        </div>
-                        <p className="formula-note">
-                          Resumen de ecuaciones clave para repasar el tema seleccionado antes de hacer
-                          ejercicios o simulacros.
-                        </p>
-                      </div>
-                      <span className="formula-viewer-toggle-label">
-                        {getStudyPanelSymbol('quick-formulas')}
-                      </span>
+                      {filterLabels[filter]}
                     </button>
-                    {expandedStudyPanels['quick-formulas'] ? (
-                      <div className="formula-grid">
-                        {selectedFormulaSheet.formulas.map((formula) => (
-                          <article className="formula-card" key={formula.label}>
-                            <span className="formula-label">{formula.label}</span>
-                            <MathFormula latex={formula.latex} />
-                          </article>
-                        ))}
-                      </div>
-                    ) : null}
-                  </section>
-                ) : null}
-                {visibleSections.length === 0 ? (
-                  <section className="topic-section-card topic-empty-state">
-                    <h4>Sin bloques para este filtro</h4>
-                    <p>
-                      Este tema no tiene una sección separada para {filterLabels[selectedFilter].toLowerCase()}.
-                      Prueba con la vista completa o con otro filtro.
-                    </p>
-                  </section>
-                ) : null}
-              </div>
+                  ))}
+                </div>
+              ) : null}
+
+              {selectedFilter === 'todo' ? (
+                <div className="study-menu-grid" aria-label="Elegir tipo de contenido">
+                  {(['teoria', 'formulas', 'ebau', 'problemas'] as StudyPanelKind[]).map((kind) => (
+                    <button
+                      className={`study-menu-card study-menu-card-${kind}`}
+                      key={kind}
+                      type="button"
+                      onClick={() => changeFilter(kind)}
+                    >
+                      <span>{kind === 'teoria' ? 'Teoría resumida' : kind === 'formulas' ? 'Fórmulas clave' : kind === 'ebau' ? 'Cuestiones PAU' : 'Problemas tipo'}</span>
+                      <strong aria-hidden="true">{getStudyPanelSymbol(kind)}</strong>
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                <div className={`study-exclusive-view study-exclusive-view-${selectedFilter}`}>
+                  {selectedFilter === 'formulas' ? (
+                    <div className="formula-grid formula-grid-study-full">
+                      {selectedFormulaSheet.formulas.map((formula) => (
+                        <article className="formula-card" key={formula.label}>
+                          <span className="formula-label">{formula.label}</span>
+                          <MathFormula latex={formula.latex} />
+                        </article>
+                      ))}
+                    </div>
+                  ) : visibleSections.length > 0 ? (
+                    visibleSections.map((section) => {
+                      const sectionKind = getSectionKind(section.title)
+
+                      return (
+                        <section className={`topic-section-card topic-section-card-${sectionKind} topic-section-card-exclusive`} key={section.title}>
+                          <h4>{getSectionTitleLabel(section.title, sectionKind)}</h4>
+                          <div className={`topic-section-body ${isTheorySummarySection(section.title) ? 'topic-section-body-study' : ''}`}>
+                            {isTheorySummarySection(section.title) ? (
+                              renderTheoryStudySection(section, renderTheoryText)
+                            ) : (
+                              section.paragraphs.map((paragraph) => (
+                                <p key={paragraph}>{paragraph}</p>
+                              ))
+                            )}
+                            {!isTheorySummarySection(section.title) && section.bullets.length > 0 ? (
+                              <ul>
+                                {section.bullets.map((bullet) => (
+                                  <li key={bullet}>
+                                    {bullet}
+                                  </li>
+                                ))}
+                              </ul>
+                            ) : null}
+                          </div>
+                        </section>
+                      )
+                    })
+                  ) : (
+                    <section className="topic-section-card topic-empty-state">
+                      <h4>Sin bloques para este filtro</h4>
+                      <p>
+                        Este tema no tiene una sección separada para {filterLabels[selectedFilter].toLowerCase()}.
+                        Prueba con la vista completa o con otro filtro.
+                      </p>
+                    </section>
+                  )}
+                </div>
+              )}
             </article>
           </div>
         </section>
@@ -2962,36 +2816,37 @@ function App() {
           ) : activePracticeExercise ? (
             <div className="practice-layout">
               <article className="practice-card featured-practice-card">
-                <span className="panel-label">
-                  Ejercicio {practiceIndex + 1} de {visiblePracticeExercises.length} · {activePracticePattern}
-                </span>
-                <h3>{activePracticeExercise.title}</h3>
-                <p className="practice-meta">
-                  {activePracticeExercise.topicTitle} · {activePracticeExercise.source} · {activePracticeExercise.type} · dificultad {activePracticeExercise.difficulty}
-                </p>
-                <div className="practice-timer-card">
-                  <div>
-                    <span className="panel-label">Tiempo del ejercicio</span>
-                    <strong>{formatPracticeTimer(practiceTimerSeconds)}</strong>
+                <div className="practice-problem-head">
+                  <div className="practice-problem-title">
+                    <span className="panel-label">
+                      Ejercicio {practiceIndex + 1} de {visiblePracticeExercises.length} · {activePracticePattern}
+                    </span>
+                    <h3>{activePracticeExercise.title}</h3>
+                    <p className="practice-meta">
+                      {activePracticeExercise.topicTitle} · {activePracticeExercise.source} · {activePracticeExercise.type} · dificultad {activePracticeExercise.difficulty}
+                    </p>
                   </div>
-                  <div className="practice-timer-actions">
-                    <button
-                      className="practice-button practice-button-muted"
-                      type="button"
-                      onClick={() => setIsPracticeTimerRunning((currentValue) => !currentValue)}
-                    >
-                      {isPracticeTimerRunning ? 'Pausar' : practiceTimerSeconds > 0 ? 'Reanudar' : 'Iniciar'}
-                    </button>
-                    <button
-                      className="practice-button practice-button-muted"
-                      type="button"
-                      onClick={() => {
-                        setPracticeTimerSeconds(0)
-                        setIsPracticeTimerRunning(false)
-                      }}
-                    >
-                      Reiniciar
-                    </button>
+                  <div className="practice-timer-card practice-timer-inline" aria-label="Cronómetro del ejercicio">
+                    <strong>{formatPracticeTimer(practiceTimerSeconds)}</strong>
+                    <div className="practice-timer-actions">
+                      <button
+                        className="practice-button practice-button-muted"
+                        type="button"
+                        onClick={() => setIsPracticeTimerRunning((currentValue) => !currentValue)}
+                      >
+                        {isPracticeTimerRunning ? 'Pausar' : practiceTimerSeconds > 0 ? 'Reanudar' : 'Iniciar'}
+                      </button>
+                      <button
+                        className="practice-button practice-button-muted"
+                        type="button"
+                        onClick={() => {
+                          setPracticeTimerSeconds(0)
+                          setIsPracticeTimerRunning(false)
+                        }}
+                      >
+                        Reiniciar
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <div className="practice-prompt-box">
@@ -3144,31 +2999,27 @@ function App() {
                     ))}
                   </div>
                   <ul className="practice-list">
-                    {visiblePracticeExercises.map((exercise, index) => (
-                      <li key={exercise.id}>
-                        <button
-                          className={`practice-list-button ${index === practiceIndex ? 'practice-list-button-active' : ''}`}
-                          type="button"
-                          onClick={() => selectPracticeExercise(index)}
-                        >
-                          <span>{exercise.title}</span>
-                          <small>{exercise.topicTitle} · {practicePatternByExerciseId[exercise.id] ?? practicePatternFallback} · {practiceStatuses[exercise.id] ?? 'pendiente'}</small>
-                        </button>
-                      </li>
-                    ))}
+                    {visiblePracticeExercises.map((exercise, index) => {
+                      const exerciseStatus = practiceStatuses[exercise.id] ?? 'pendiente'
+
+                      return (
+                        <li className="practice-list-item" key={exercise.id}>
+                          <button
+                            className={`practice-list-button practice-list-button-${exerciseStatus} ${index === practiceIndex ? 'practice-list-button-active' : ''}`}
+                            type="button"
+                            onClick={() => selectPracticeExercise(index)}
+                          >
+                            <span className={`practice-exercise-status-dot practice-exercise-status-dot-${exerciseStatus}`} aria-hidden="true" />
+                            <span className="practice-list-button-copy">
+                              <span>{exercise.title}</span>
+                              <small>{exercise.topicTitle} · {practicePatternByExerciseId[exercise.id] ?? practicePatternFallback} · {practiceStatusLabels[exerciseStatus]}</small>
+                            </span>
+                          </button>
+                        </li>
+                      )
+                    })}
                   </ul>
                 </article>
-
-                {ebauSection?.bullets?.length ? (
-                  <article className="practice-card practice-side-card practice-ebau-card">
-                    <span className="panel-label">Cuestiones EBAU relacionadas</span>
-                    <ul className="practice-list compact-practice-list">
-                      {ebauSection.bullets.map((bullet) => (
-                        <li key={bullet}>{bullet}</li>
-                      ))}
-                    </ul>
-                  </article>
-                ) : null}
               </div>
             </div>
           ) : (
@@ -3200,33 +3051,6 @@ function App() {
               <p className="eyebrow">Laboratorio interactivo</p>
               <h2>Simulaciones para manipular conceptos</h2>
             </div>
-            <p className="simulation-heading-note">
-              La página queda organizada como una ruta clara: eliges una simulación, manipulas
-              variables, lees qué está ocurriendo y saltas al bloque real de teoría o práctica.
-            </p>
-          </div>
-
-          <div className="simulation-page-flow" aria-label="Estructura de la página de simulaciones">
-            <article className="simulation-flow-card">
-              <span>1</span>
-              <strong>Elige bloque</strong>
-              <p>Tarjetas por tema con ley principal, controles y objetivo didáctico.</p>
-            </article>
-            <article className="simulation-flow-card">
-              <span>2</span>
-              <strong>Manipula variables</strong>
-              <p>Controles simples con respuesta visual inmediata y valores actualizados.</p>
-            </article>
-            <article className="simulation-flow-card">
-              <span>3</span>
-              <strong>Interpreta</strong>
-              <p>Lectura guiada de lo que cambia y de qué ley explica ese cambio.</p>
-            </article>
-            <article className="simulation-flow-card">
-              <span>4</span>
-              <strong>Conecta</strong>
-              <p>Saltos directos a teoría, fórmulas, ejercicios o simulacros del mismo tema.</p>
-            </article>
           </div>
 
           <div className="simulation-card-grid" aria-label="Selección de simulaciones">
@@ -3329,25 +3153,6 @@ function App() {
                           onChange={(event) => setWaveTime(Number(event.target.value))}
                         />
                       </label>
-                      <div className="simulation-control-actions">
-                        <button
-                          className="practice-button"
-                          type="button"
-                          onClick={() => setIsWavePlaying((currentValue) => !currentValue)}
-                        >
-                          {isWavePlaying ? 'Pausar' : 'Reproducir'}
-                        </button>
-                        <button
-                          className="practice-button practice-button-muted"
-                          type="button"
-                          onClick={() => {
-                            setWaveTime(0)
-                            setIsWavePlaying(false)
-                          }}
-                        >
-                          Reiniciar
-                        </button>
-                      </div>
                     </div>
 
                     <div className="simulation-canvas-panel">
@@ -3380,6 +3185,37 @@ function App() {
                           <line className="simulation-probe-line" x1="610" y1="20" x2="610" y2="240" />
                           <circle className="simulation-probe-dot" cx="610" cy={waveProbeY} r="8" />
                         </svg>
+                      </div>
+                      <div className="simulation-wave-action-bar" aria-label="Acciones de ondas armónicas">
+                        <button
+                          className="simulation-action-button simulation-action-button-primary"
+                          type="button"
+                          onClick={() => setIsWavePlaying((currentValue) => !currentValue)}
+                        >
+                          {isWavePlaying ? 'Pausar' : 'Reproducir'}
+                        </button>
+                        <button
+                          className="simulation-action-button"
+                          type="button"
+                          onClick={() => {
+                            setWaveTime(0)
+                            setIsWavePlaying(false)
+                          }}
+                        >
+                          Reiniciar
+                        </button>
+                        <button className="simulation-action-button" type="button" onClick={() => openStudyFromSimulation('01-ondas', 'teoria')}>
+                          Ver teoría
+                        </button>
+                        <button className="simulation-action-button" type="button" onClick={() => openStudyFromSimulation('01-ondas', 'formulas')}>
+                          Ver fórmulas
+                        </button>
+                        <button className="simulation-action-button" type="button" onClick={() => openPracticeFromSimulation('01-ondas')}>
+                          Ejercicios
+                        </button>
+                        <button className="simulation-action-button" type="button" onClick={() => openMockFromSimulation('01-ondas')}>
+                          Simulacro
+                        </button>
                       </div>
                       <div className="simulation-readout-row">
                         <div className="simulation-live-readout">
@@ -3434,20 +3270,6 @@ function App() {
                     </article>
                   </div>
 
-                  <div className="practice-actions simulation-link-actions">
-                    <button className="practice-button" type="button" onClick={() => openStudyFromSimulation('01-ondas', 'teoria')}>
-                      Ver teoría
-                    </button>
-                    <button className="practice-button practice-button-muted" type="button" onClick={() => openStudyFromSimulation('01-ondas', 'formulas')}>
-                      Ver fórmulas
-                    </button>
-                    <button className="practice-button practice-button-muted" type="button" onClick={() => openPracticeFromSimulation('01-ondas')}>
-                      Ir a ejercicios
-                    </button>
-                    <button className="practice-button practice-button-muted" type="button" onClick={() => openMockFromSimulation('01-ondas')}>
-                      Ir a simulacro
-                    </button>
-                  </div>
                 </>
               ) : selectedSimulation.id === 'optica' ? (
                 <>
@@ -3916,33 +3738,14 @@ function App() {
 
       {activeView === 'ampliacion' ? (
         <section className="card phet-view">
-          <div className="section-heading">
+          <div className="section-heading phet-heading">
             <div>
               <p className="eyebrow">Recursos externos</p>
-              <h2>PhET para profundizar sin recargar la app</h2>
+              <h2>LABORATORIO PHET</h2>
             </div>
             <p className="simulation-heading-note">
-              Aquí quedan los recursos externos para explorar más temas o versiones más completas de un
-              fenómeno, sin mezclar esa complejidad dentro del laboratorio principal de la app.
+              Simulaciones interactivas externas para visualizar conceptos complejos y llevar la teoría a la práctica.
             </p>
-          </div>
-
-          <div className="phet-intro-grid">
-            <article className="simulation-flow-card">
-              <span>1</span>
-              <strong>Consolida aquí</strong>
-              <p>Usa primero las simulaciones propias de ondas, lentes y espejos para fijar la idea base.</p>
-            </article>
-            <article className="simulation-flow-card">
-              <span>2</span>
-              <strong>Amplía con PhET</strong>
-              <p>Abre la simulación externa cuando quieras más casos, más controles o más profundidad visual.</p>
-            </article>
-            <article className="simulation-flow-card">
-              <span>3</span>
-              <strong>Vuelve al temario</strong>
-              <p>Cierra el bucle enlazando teoría, fórmulas y ejercicios del mismo bloque del curso.</p>
-            </article>
           </div>
 
           <div className="phet-group-list" aria-label="Recursos de ampliación con PhET por bloques">
@@ -3952,7 +3755,7 @@ function App() {
                   className="phet-group-summary"
                   onClick={(event) => {
                     event.preventDefault()
-                    setActivePhetGroup(group)
+                    setActivePhetGroup((currentGroup) => currentGroup === group ? null : group)
                   }}
                 >
                   <div className="phet-group-summary-main">
@@ -3985,21 +3788,10 @@ function App() {
                           <li key={note}>{note}</li>
                         ))}
                       </ul>
-                      <div className="practice-actions phet-link-actions">
-                        <a className="practice-button" href={resource.url} target="_blank" rel="noreferrer">
-                          Abrir en PhET
+                      <div className="phet-link-actions">
+                        <a className="phet-primary-link" href={resource.url} target="_blank" rel="noreferrer">
+                          ▶ ABRIR SIMULACIÓN PHET
                         </a>
-                        <button className="practice-button practice-button-muted" type="button" onClick={() => openStudyFromSimulation(resource.topicId, 'teoria')}>
-                          Ver teoría
-                        </button>
-                        <button className="practice-button practice-button-muted" type="button" onClick={() => openPracticeFromSimulation(resource.topicId)}>
-                          Ir a ejercicios
-                        </button>
-                        {'nativeSimulationId' in resource ? (
-                          <button className="practice-button practice-button-muted" type="button" onClick={() => openNativeSimulation(resource.nativeSimulationId)}>
-                            Comparar con simulación propia
-                          </button>
-                        ) : null}
                       </div>
                     </article>
                   ))}
