@@ -22,8 +22,8 @@ Cuestión
 ### Dificultad
 Media
 ### Enunciado
-Una espira circular de radio 30 cm, contenida en el plano XY, está inmersa en un campo uniforme `B = 5 k T`. Durante 0,1 s el campo aumenta linealmente hasta `10 k T`. Calcula la fem inducida y determina el sentido de la corriente durante el proceso justificando la respuesta con la ley física adecuada.
+Una espira circular de radio `30\,\mathrm{cm}`, contenida en el plano `XY`, está inmersa en un campo uniforme `\vec{B}=5\,\vec{k}\,\mathrm{T}`. Durante `0{,}1\,\mathrm{s}` el campo aumenta linealmente hasta `10\,\vec{k}\,\mathrm{T}`. Calcula la fem inducida y determina el sentido de la corriente durante el proceso justificando la respuesta con la ley física adecuada.
 ### Pista
-El flujo es `Phi = B S` porque el campo es perpendicular al plano, y la fem media sale de `|Delta Phi|/Delta t`.
+El flujo es `\Phi=BS` porque el campo es perpendicular al plano, y la fem media sale de `\frac{|\Delta\Phi|}{\Delta t}`.
 ### Archivo
 content/examenes/evau/examenes pau física/JULIO 2024 EBAU.pdf

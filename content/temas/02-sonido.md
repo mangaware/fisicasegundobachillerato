@@ -25,11 +25,11 @@ El sonido es una onda mecánica y longitudinal que necesita un medio material pa
 
 ## Fórmulas clave
 
-- Frecuencia observada en efecto Doppler: `f_obs = f_emitida · (v_onda ± v_receptor)/(v_onda ± v_foco)`
-- Intensidad física: `I = P/S = P/(4pi r^2)`
-- Nivel de intensidad sonora: `beta = 10·log10(I/I_0)` con `I_0 = 10^-12 W/m^2`
-- Nivel sonoro para varias fuentes iguales: `beta_n = 10·log10(n) + beta_1`
-- Relación de intensidades con la distancia: `I_2/I_1 = r_1^2/r_2^2`
+- Frecuencia observada en efecto Doppler: `f_{\mathrm{obs}}=f_{\mathrm{emitida}}\frac{v_{\mathrm{onda}}\pm v_{\mathrm{receptor}}}{v_{\mathrm{onda}}\pm v_{\mathrm{foco}}}`
+- Intensidad física: `I=\frac{P}{S}=\frac{P}{4\pi r^2}`
+- Nivel de intensidad sonora: `\beta=10\log_{10}\left(\frac{I}{I_0}\right)` con `I_0=10^{-12}\,\mathrm{W\,m^{-2}}`
+- Nivel sonoro para varias fuentes iguales: `\beta_n=10\log_{10}(n)+\beta_1`
+- Relación de intensidades con la distancia: `\frac{I_2}{I_1}=\frac{r_1^2}{r_2^2}`
 
 ## Cuestiones EBAU
 

@@ -26,16 +26,16 @@ La gravitación describe la interacción atractiva entre masas y se modeliza com
 
 ## Fórmulas clave
 
-- Ley de gravitación universal: `F = G·M·m / r^2`
-- Campo gravitatorio: `g(r) = -G·M / r^2`
-- Energía potencial gravitatoria: `E_p = -G·M·m / r`
-- Potencial gravitatorio: `V(r) = E_p/m = -G·M / r`
-- Trabajo del campo: `W_campo(A -> B) = -Delta E_p = m·[V(A) - V(B)]`
-- Tercera ley de Kepler: `T^2 / r^3 = 4pi^2 / (G·M)`
-- Velocidad orbital: `v_orb = sqrt(G·M / r)`
-- Velocidad de escape: `v_esc = sqrt(2G·M / r)`
-- Campo gravitatorio con altura: `g(h) = g_0 / (1 + h/R)^2`
-- En órbita circular: `E_c = -E_M = -E_p/2`
+- Ley de gravitación universal: `F=\frac{GMm}{r^2}`
+- Campo gravitatorio: `g(r)=-\frac{GM}{r^2}`
+- Energía potencial gravitatoria: `E_p=-\frac{GMm}{r}`
+- Potencial gravitatorio: `V(r)=\frac{E_p}{m}=-\frac{GM}{r}`
+- Trabajo del campo: `W_{\mathrm{campo}}(A\to B)=-\Delta E_p=m[V(A)-V(B)]`
+- Tercera ley de Kepler: `\frac{T^2}{r^3}=\frac{4\pi^2}{GM}`
+- Velocidad orbital: `v_{\mathrm{orb}}=\sqrt{\frac{GM}{r}}`
+- Velocidad de escape: `v_{\mathrm{esc}}=\sqrt{\frac{2GM}{r}}`
+- Campo gravitatorio con altura: `g(h)=\frac{g_0}{\left(1+\frac{h}{R}\right)^2}`
+- En órbita circular: `E_c=-E_M=-\frac{E_p}{2}`
 
 ## Cuestiones EBAU
 

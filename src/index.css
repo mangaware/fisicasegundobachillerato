@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap&subset=latin,latin-ext');
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&display=swap&subset=latin,latin-ext');
 
 @font-face {
   font-family: 'Coalition';
@@ -87,7 +88,7 @@
   --bevel-dark: rgba(3, 8, 16, 0.6);
   color: var(--text-primary);
   background: linear-gradient(180deg, #f8fafc 0%, #e6ebf0 100%);
-  font-family: 'Readfine Demo', "Avenir Next", "Segoe UI", sans-serif;
+  font-family: 'Oxanium', "Avenir Next", "Segoe UI", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -887,7 +888,7 @@ body.body-bg-ink-dark .top-menu {
   border-radius: 3px;
   background: rgba(5, 10, 18, 0.88);
   color: #eef7ff;
-  font-family: 'Readfine Demo', 'Coalition', 'Avenir Next', 'Segoe UI', sans-serif;
+  font-family: 'Oxanium', 'Readfine Demo', 'Coalition', 'Avenir Next', 'Segoe UI', sans-serif;
   font-size: 1.18rem;
   line-height: 1.15;
   outline: none;
@@ -1522,7 +1523,7 @@ body.body-bg-ink-dark .study-quote-box {
 .home-side-stack {
   grid-area: side;
   display: grid;
-  align-content: start;
+  align-content: center;
   gap: 14px;
 }
 
@@ -1531,7 +1532,7 @@ body.body-bg-ink-dark .study-quote-box {
   clip-path: polygon(0 0, 100% 0, 100% 88%, 94% 100%, 0 100%);
 }
 
-.home-side-card strong {
+.home-side-card > strong {
   display: block;
   margin: 10px 0 8px;
   font-family: 'Squada One', 'Avenir Next', 'Segoe UI', sans-serif;
@@ -1554,6 +1555,117 @@ body.body-bg-ink-dark .study-quote-box {
 .home-side-list {
   margin: 0;
   padding-left: 18px;
+}
+
+.home-quick-access-panel {
+  display: grid;
+  align-content: center;
+  gap: 20px;
+  min-height: 265px;
+  padding: 24px;
+  border-radius: 6px;
+  clip-path: none;
+  background:
+    radial-gradient(circle at 80% 18%, rgba(83, 210, 255, 0.12), transparent 26%),
+    linear-gradient(180deg, rgba(12, 18, 31, 0.9), rgba(7, 11, 20, 0.96));
+}
+
+.home-quick-heading {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 6px;
+  text-align: left;
+}
+
+.home-quick-heading span {
+  color: rgba(165, 211, 234, 0.82);
+  font-family: 'Calculator', 'Coalition', 'Avenir Next', 'Segoe UI', sans-serif;
+  font-size: 0.96rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.home-quick-heading p {
+  margin: 0;
+  color: rgba(247, 251, 255, 0.9);
+  font-family: 'Squada One', 'Avenir Next', 'Segoe UI', sans-serif;
+  font-size: 1.02rem;
+  letter-spacing: 0.04em;
+  line-height: 1.55;
+}
+
+.home-quick-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.home-quick-button {
+  --quick-accent: #53d2ff;
+  min-width: 0;
+  min-height: 102px;
+  padding: 12px 8px;
+  border-radius: 6px;
+  border: 1px solid color-mix(in srgb, var(--quick-accent) 42%, transparent);
+  background:
+    radial-gradient(circle at 50% 18%, color-mix(in srgb, var(--quick-accent) 16%, transparent), transparent 42%),
+    rgba(255, 255, 255, 0.045);
+  color: #f7fbff;
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  cursor: pointer;
+  clip-path: polygon(0 0, 100% 0, 94% 100%, 0 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  clip-path: none;
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.home-quick-button span {
+  color: var(--quick-accent);
+  font-family: 'Stark', 'Calculator', 'Coalition', 'Avenir Next', 'Segoe UI', sans-serif;
+  font-size: 1.55rem;
+  line-height: 1;
+  text-shadow: 0 0 12px color-mix(in srgb, var(--quick-accent) 42%, transparent);
+}
+
+.home-quick-button strong {
+  font-family: 'Squada One', 'Avenir Next', 'Segoe UI', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+}
+
+.home-quick-button:hover,
+.home-quick-button:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--quick-accent);
+  background:
+    radial-gradient(circle at 50% 18%, color-mix(in srgb, var(--quick-accent) 28%, transparent), transparent 46%),
+    rgba(255, 255, 255, 0.075);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 18px color-mix(in srgb, var(--quick-accent) 28%, transparent),
+    0 14px 24px rgba(0, 0, 0, 0.22);
+}
+
+.home-quick-button-study {
+  --quick-accent: #53d2ff;
+}
+
+.home-quick-button-practice {
+  --quick-accent: #ffd247;
+}
+
+.home-quick-button-mock {
+  --quick-accent: #ff4d79;
+}
+
+.home-quick-button-sim {
+  --quick-accent: #35ff9a;
 }
 
 .home-physicists-shell {
@@ -1727,7 +1839,7 @@ body.body-bg-ink-dark .study-quote-box {
 }
 
 .hero-portrait-quote span {
-  font-family: 'Elegant Typewriter', 'Readfine Demo', 'Coalition', 'Avenir Next', 'Segoe UI', sans-serif;
+  font-family: 'Oxanium', 'Elegant Typewriter', 'Readfine Demo', 'Coalition', 'Avenir Next', 'Segoe UI', sans-serif;
   display: block;
   font-size: 0.92rem;
   line-height: 1.42;
@@ -3301,6 +3413,7 @@ body.body-bg-ink-dark .study-quote-box {
 .simulation-architecture-card li,
 .simulation-recommendation-card p {
   color: var(--text-secondary);
+  font-family: 'Oxanium', 'Avenir Next', 'Segoe UI', sans-serif;
   line-height: 1.62;
 }
 

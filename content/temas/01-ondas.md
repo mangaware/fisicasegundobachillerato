@@ -27,16 +27,16 @@ Una onda es la propagación de una perturbación que transporta energía sin tra
 
 ## Fórmulas clave
 
-- Ecuación de una onda armónica: `y(x,t) = A·sin(omega·t ± k·x + phi_0)`
-- Velocidad de vibración: `v(x,t) = A·omega·cos(omega·t ± k·x + phi_0)`
-- Frecuencia angular: `omega = 2pi/T`
-- Número de onda: `k = 2pi/lambda`
-- Período y frecuencia: `T = 1/f`
-- Velocidad de propagación: `v = lambda/T = lambda·f`
-- Velocidad máxima y aceleración máxima en MAS: `v_max = A·omega` y `a_max = A·omega^2`
-- Interferencia constructiva: `Delta x = n·lambda`
-- Interferencia destructiva: `Delta x = (2n + 1)·lambda/2`
-- Ley de Snell en forma de velocidades: `sen(i)/sen(r) = v_1/v_2`
+- Ecuación de una onda armónica: `y(x,t)=A\sin(\omega t\pm kx+\varphi_0)`
+- Velocidad de vibración: `v(x,t)=A\omega\cos(\omega t\pm kx+\varphi_0)`
+- Frecuencia angular: `\omega=\frac{2\pi}{T}`
+- Número de onda: `k=\frac{2\pi}{\lambda}`
+- Período y frecuencia: `T=\frac{1}{f}`
+- Velocidad de propagación: `v=\frac{\lambda}{T}=\lambda f`
+- Velocidad máxima y aceleración máxima en MAS: `v_{\max}=A\omega` y `a_{\max}=A\omega^2`
+- Interferencia constructiva: `\Delta x=n\lambda`
+- Interferencia destructiva: `\Delta x=\frac{(2n+1)\lambda}{2}`
+- Ley de Snell en forma de velocidades: `\frac{\sin i}{\sin r}=\frac{v_1}{v_2}`
 
 ## Cuestiones EBAU
 

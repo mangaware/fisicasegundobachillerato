@@ -66,15 +66,15 @@ const mainViewLabels: Record<MainView, string> = {
 const mainViewOrder: MainView[] = ['inicio', 'estudio', 'practica', 'simulacros', 'simulaciones', 'ampliacion', 'resumen']
 
 const universalConstants = [
-  { symbol: 'G', name: 'Constante de gravitación', value: '6,67 x 10^-11', unit: 'N m² kg^-2' },
-  { symbol: 'c', name: 'Velocidad de la luz', value: '3,00 x 10^8', unit: 'm s^-1' },
-  { symbol: 'h', name: 'Constante de Planck', value: '6,63 x 10^-34', unit: 'J s' },
-  { symbol: 'e', name: 'Carga elemental', value: '1,60 x 10^-19', unit: 'C' },
-  { symbol: 'k', name: 'Constante de Coulomb', value: '9,00 x 10^9', unit: 'N m² C^-2' },
-  { symbol: 'm_e', name: 'Masa del electrón', value: '9,11 x 10^-31', unit: 'kg' },
-  { symbol: 'm_p', name: 'Masa del protón', value: '1,67 x 10^-27', unit: 'kg' },
-  { symbol: 'u', name: 'Unidad de masa atómica', value: '1,66 x 10^-27', unit: 'kg' },
-  { symbol: 'g', name: 'Gravedad en la Tierra', value: '9,8', unit: 'm s^-2' },
+  { symbol: 'G', name: 'Constante de gravitación', latex: '6{,}67\\times10^{-11}\\,\\mathrm{N\\,m^2\\,kg^{-2}}' },
+  { symbol: 'c', name: 'Velocidad de la luz', latex: '3{,}00\\times10^8\\,\\mathrm{m\\,s^{-1}}' },
+  { symbol: 'h', name: 'Constante de Planck', latex: '6{,}63\\times10^{-34}\\,\\mathrm{J\\,s}' },
+  { symbol: 'e', name: 'Carga elemental', latex: '1{,}60\\times10^{-19}\\,\\mathrm{C}' },
+  { symbol: 'k', name: 'Constante de Coulomb', latex: '9{,}00\\times10^9\\,\\mathrm{N\\,m^2\\,C^{-2}}' },
+  { symbol: 'm_e', name: 'Masa del electrón', latex: '9{,}11\\times10^{-31}\\,\\mathrm{kg}' },
+  { symbol: 'm_p', name: 'Masa del protón', latex: '1{,}67\\times10^{-27}\\,\\mathrm{kg}' },
+  { symbol: 'u', name: 'Unidad de masa atómica', latex: '1{,}66\\times10^{-27}\\,\\mathrm{kg}' },
+  { symbol: 'g', name: 'Gravedad en la Tierra', latex: '9{,}8\\,\\mathrm{m\\,s^{-2}}' },
 ] as const
 
 const theoryPdfDownloads: Partial<Record<string, string>> = {
@@ -178,12 +178,6 @@ const homePhysicists = [
 
 const scientistImageFallback =
   'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 220"%3E%3Crect width="280" height="220" fill="%23111824"/%3E%3Cpath d="M95 166c7-30 83-30 90 0" fill="none" stroke="%2353d2ff" stroke-width="8" stroke-linecap="round"/%3E%3Ccircle cx="140" cy="92" r="38" fill="%23202b3f" stroke="%23ffcf45" stroke-width="6"/%3E%3Ctext x="140" y="196" text-anchor="middle" fill="%23c1d8ff" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700"%3EF%C3%8DSICA%3C/text%3E%3C/svg%3E'
-
-const homeStudySuggestions = [
-  'Empieza por Estudio para repasar teoría y fórmulas del tema que estés trabajando.',
-  'Pasa a Práctica y marca cada ejercicio como hecho, fallado o revisar.',
-  'Usa Simulaciones y PhET cuando necesites ver el fenómeno antes de resolver problemas.',
-] as const
 
 const simulationCards: Array<{
   id: SimulationId
@@ -775,7 +769,23 @@ function isTheorySummarySection(title: string) {
 function normalizeInlineLatex(text: string) {
   return text
     .replace(/^\$+|\$+$/g, '')
+    .replace(/·/g, '\\,')
+    .replace(/º/g, '^\\circ')
+    .replace(/°/g, '^\\circ')
+    .replace(/>=/g, '\\geq')
+    .replace(/<=/g, '\\leq')
+    .replace(/->/g, '\\to')
     .replace(/(^|[^\\])lambda\b/gi, '$1\\lambda')
+    .replace(/(^|[^\\])omega\b/gi, '$1\\omega')
+    .replace(/(^|[^\\])phi\b/gi, '$1\\varphi')
+    .replace(/(^|[^\\])gamma\b/gi, '$1\\gamma')
+    .replace(/(^|[^\\])Delta\b/g, '$1\\Delta')
+    .replace(/(^|[^\\])Phi\b/g, '$1\\Phi')
+    .replace(/(^|[^\\])epsilon\b/gi, '$1\\varepsilon')
+    .replace(/(^|[^\\])mu0\b/g, '$1\\mu_0')
+    .replace(/\bsen\b/gi, '\\sin')
+    .replace(/\buC\b/g, '\\mu\\mathrm{C}')
+    .replace(/\bum\b/g, '\\mu\\mathrm{m}')
     .trim()
 }
 
@@ -1871,7 +1881,7 @@ function App() {
       .map((constant) => `
         <article class="constant-item">
           <strong>${escapeHtml(constant.symbol)}</strong>
-          <span>${escapeHtml(constant.value)} ${escapeHtml(constant.unit)}</span>
+          <span>${katex.renderToString(constant.latex, { throwOnError: false })}</span>
         </article>
       `)
       .join('')
@@ -2312,7 +2322,7 @@ function App() {
                 <strong>{constant.symbol}</strong>
                 <div>
                   <span>{constant.name}</span>
-                  <p>{constant.value} {constant.unit}</p>
+                  <MathFormula latex={constant.latex} inline />
                 </div>
               </article>
             ))}
@@ -2391,23 +2401,30 @@ function App() {
               </button>
             </div>
 
-            <aside className="home-side-stack" aria-label="Estado rápido de la portada">
-              <article className="home-side-card">
-                <p className="panel-label">Estado</p>
-                <strong>Temario operativo</strong>
-                <p>
-                  Las fichas reales ya están cargadas y se abren desde la app con teoría, fórmulas
-                  y práctica asociada.
-                </p>
-              </article>
-
-              <article className="home-side-card home-side-card-alert">
-                <p className="panel-label">Qué hacer ahora</p>
-                <ul className="home-side-list">
-                  {homeStudySuggestions.map((step) => (
-                    <li key={step}>{step}</li>
-                  ))}
-                </ul>
+            <aside className="home-side-stack" aria-label="Acceso rápido de la portada">
+              <article className="home-side-card home-quick-access-panel">
+                <div className="home-quick-heading">
+                  <span>El camino a la EBAU</span>
+                  <p>Cada problema resuelto es un paso más. Elige tu entrenamiento:</p>
+                </div>
+                <div className="home-quick-grid">
+                  <button className="home-quick-button home-quick-button-study" type="button" onClick={() => setActiveView('estudio')}>
+                    <span aria-hidden="true">▰</span>
+                    <strong>Estudio</strong>
+                  </button>
+                  <button className="home-quick-button home-quick-button-practice" type="button" onClick={() => setActiveView('practica')}>
+                    <span aria-hidden="true">✎</span>
+                    <strong>Práctica</strong>
+                  </button>
+                  <button className="home-quick-button home-quick-button-mock" type="button" onClick={() => setActiveView('simulacros')}>
+                    <span aria-hidden="true">◷</span>
+                    <strong>Simulacros</strong>
+                  </button>
+                  <button className="home-quick-button home-quick-button-sim" type="button" onClick={() => setActiveView('simulaciones')}>
+                    <span aria-hidden="true">⚛</span>
+                    <strong>Simulaciones</strong>
+                  </button>
+                </div>
               </article>
             </aside>
 

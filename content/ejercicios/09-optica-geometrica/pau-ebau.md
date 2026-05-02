@@ -8,7 +8,7 @@ Cuestión
 ### Dificultad
 Media
 ### Enunciado
-Se tiene una lente que forma una imagen virtual situada a 10 cm de la lente. A partir de la posición del objeto indicada en el examen, determina la distancia focal imagen, la potencia en dioptrias y el tamaño de la imagen si el objeto mide 5 cm.
+Se tiene una lente que forma una imagen virtual situada a `10\,\mathrm{cm}` de la lente. A partir de la posición del objeto indicada en el examen, determina la distancia focal imagen, la potencia en dioptrias y el tamaño de la imagen si el objeto mide `5\,\mathrm{cm}`.
 ### Pista
 Trabaja con el convenio de signos de lentes y usa el aumento lateral para el tamaño de la imagen.
 ### Archivo
@@ -22,7 +22,7 @@ Cuestión
 ### Dificultad
 Media
 ### Enunciado
-Un objeto de 10 cm de altura se coloca a 1 m del vértice de un espejo esférico convexo cuya distancia focal es 1 m. Calcula la posición y el tamaño de la imagen e indica sus características apoyandote en un esquema de rayos.
+Un objeto de `10\,\mathrm{cm}` de altura se coloca a `1\,\mathrm{m}` del vértice de un espejo esférico convexo cuya distancia focal es `1\,\mathrm{m}`. Calcula la posición y el tamaño de la imagen e indica sus características apoyandote en un esquema de rayos.
 ### Pista
 Recuerda que para un espejo convexo la focal es negativa y la imagen debe salir virtual, derecha y reducida.
 ### Archivo
