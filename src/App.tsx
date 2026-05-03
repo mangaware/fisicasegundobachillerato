@@ -562,6 +562,39 @@ function getSectionTitleLabel(title: string, kind: Exclude<ContentFilter, 'todo'
   return title
 }
 
+function getFormulaVariableLegend(latex: string) {
+  const normalizedLatex = ` ${latex} `
+  const candidates = [
+    { symbol: 'y', description: 'elongación de la onda', test: /(^|[^a-zA-Z])y\(/.test(normalizedLatex) || /(^|[^a-zA-Z])y([^a-zA-Z]|$)/.test(normalizedLatex) },
+    { symbol: 'A', description: 'amplitud', test: /(^|[^a-zA-Z])A([^a-zA-Z]|$)/.test(normalizedLatex) },
+    { symbol: 'k', description: 'número de onda o constante de la fórmula', test: /(^|[^a-zA-Z])k([^a-zA-Z]|$)/.test(normalizedLatex) },
+    { symbol: '\\omega', description: 'frecuencia angular', test: normalizedLatex.includes('\\omega') },
+    { symbol: 't', description: 'tiempo', test: /(^|[^a-zA-Z])t([^a-zA-Z]|$)/.test(normalizedLatex) },
+    { symbol: '\\phi_0', description: 'fase inicial', test: normalizedLatex.includes('\\phi_0') || normalizedLatex.includes('\\varphi_0') },
+    { symbol: '\\lambda', description: 'longitud de onda', test: normalizedLatex.includes('\\lambda') },
+    { symbol: 'T', description: 'periodo', test: /(^|[^a-zA-Z])T([^a-zA-Z]|$)/.test(normalizedLatex) },
+    { symbol: 'f', description: 'frecuencia', test: /(^|[^a-zA-Z])f([^a-zA-Z]|$)/.test(normalizedLatex) },
+    { symbol: 'v', description: 'velocidad', test: /(^|[^a-zA-Z])v([^a-zA-Z]|$)/.test(normalizedLatex) },
+    { symbol: 'F', description: 'fuerza', test: /(^|[^a-zA-Z])F([^a-zA-Z]|$)/.test(normalizedLatex) },
+    { symbol: 'G', description: 'constante de gravitación', test: /(^|[^a-zA-Z])G([^a-zA-Z]|$)/.test(normalizedLatex) },
+    { symbol: 'M, m', description: 'masas', test: /(^|[^a-zA-Z])M([^a-zA-Z]|$)/.test(normalizedLatex) || /(^|[^a-zA-Z])m([^a-zA-Z]|$)/.test(normalizedLatex) },
+    { symbol: 'r', description: 'distancia al foco o separación', test: /(^|[^a-zA-Z])r([^a-zA-Z]|$)/.test(normalizedLatex) },
+    { symbol: 'q', description: 'carga eléctrica', test: /(^|[^a-zA-Z])q([^a-zA-Z]|$)/.test(normalizedLatex) },
+    { symbol: 'E', description: 'campo o energía según contexto', test: /(^|[^a-zA-Z])E([^a-zA-Z]|$)/.test(normalizedLatex) },
+    { symbol: 'V', description: 'potencial eléctrico', test: /(^|[^a-zA-Z])V([^a-zA-Z]|$)/.test(normalizedLatex) },
+    { symbol: 'I', description: 'intensidad de corriente', test: /(^|[^a-zA-Z])I([^a-zA-Z]|$)/.test(normalizedLatex) },
+    { symbol: 'B', description: 'campo magnético', test: /(^|[^a-zA-Z])B([^a-zA-Z]|$)/.test(normalizedLatex) },
+    { symbol: '\\Phi', description: 'flujo magnético', test: normalizedLatex.includes('\\Phi') },
+    { symbol: '\\varepsilon', description: 'fuerza electromotriz', test: normalizedLatex.includes('\\varepsilon') || normalizedLatex.includes('\\epsilon') },
+    { symbol: 'h', description: 'constante de Planck', test: /(^|[^a-zA-Z])h([^a-zA-Z]|$)/.test(normalizedLatex) },
+    { symbol: '\\nu', description: 'frecuencia de la radiación', test: normalizedLatex.includes('\\nu') },
+    { symbol: 'c', description: 'velocidad de la luz', test: /(^|[^a-zA-Z])c([^a-zA-Z]|$)/.test(normalizedLatex) },
+    { symbol: '\\Delta', description: 'variación de la magnitud', test: normalizedLatex.includes('\\Delta') },
+  ]
+
+  return candidates.filter((candidate) => candidate.test).slice(0, 7)
+}
+
 const practiceStatusLabels: Record<PracticeStatus, string> = {
   pendiente: 'Pendiente',
   hecho: 'Hecho',
@@ -1088,6 +1121,7 @@ function App() {
   const [activePhetGroup, setActivePhetGroup] = useState<PhetGroup | null>(null)
   const [isPracticeHintOpen, setIsPracticeHintOpen] = useState(false)
   const [isPracticeSolutionOpen, setIsPracticeSolutionOpen] = useState(false)
+  const [isPracticeFiltersOpen, setIsPracticeFiltersOpen] = useState(false)
   const [isFlashcardMode, setIsFlashcardMode] = useState(false)
   const [isFlashcardRevealed, setIsFlashcardRevealed] = useState(false)
   const [flashcardIndex, setFlashcardIndex] = useState(0)
@@ -1388,6 +1422,7 @@ function App() {
     ? practicePatternByExerciseId[activePracticeExercise.id] ?? practicePatternFallback
     : practicePatternFallback
   const activePracticeErrorTags = activePracticeExercise ? practiceErrorTags[activePracticeExercise.id] ?? [] : []
+  const hasActivePracticeFilters = practiceMode !== 'todos' || selectedPracticePattern !== 'todo'
   const activePracticeFormula = useMemo(() => {
     if (!activePracticeExercise) {
       return null
@@ -1409,6 +1444,7 @@ function App() {
   }, [activePracticeExercise, selectedFormulaSheet])
   const flashcardFormulas = selectedFormulaSheet.formulas
   const activeFlashcardFormula = flashcardFormulas[flashcardIndex] ?? flashcardFormulas[0] ?? null
+  const activeFlashcardVariableLegend = activeFlashcardFormula ? getFormulaVariableLegend(activeFlashcardFormula.latex) : []
 
   const practiceStatusSummary = useMemo(() => {
     const counts: Record<PracticeStatus, number> = {
@@ -1866,6 +1902,7 @@ function App() {
       return
     }
 
+    setIsFlashcardRevealed(false)
     setFlashcardIndex((currentIndex) => {
       if (direction === 'next') {
         return (currentIndex + 1) % flashcardFormulas.length
@@ -1873,6 +1910,10 @@ function App() {
 
       return (currentIndex - 1 + flashcardFormulas.length) % flashcardFormulas.length
     })
+  }
+
+  function markFlashcardSelfAssessment() {
+    goToNextFlashcard('next')
   }
 
   function printFormulaCheatSheet(topicId: string) {
@@ -2750,7 +2791,22 @@ function App() {
           </div>
           <div className="practice-control-panel" aria-label="Controles de práctica">
             <div className="practice-control-group practice-topic-control">
-              <span className="panel-label">Bloque</span>
+              <div className="practice-control-header">
+                <span className="panel-label">Bloque</span>
+                {!isFlashcardMode ? (
+                  <button
+                    className={`practice-filter-toggle ${isPracticeFiltersOpen ? 'practice-filter-toggle-open' : ''} ${
+                      hasActivePracticeFilters ? 'practice-filter-toggle-active' : ''
+                    }`}
+                    type="button"
+                    aria-expanded={isPracticeFiltersOpen}
+                    onClick={() => setIsPracticeFiltersOpen((currentValue) => !currentValue)}
+                  >
+                    <span className="practice-filter-toggle-icon" aria-hidden="true" />
+                    Filtros de búsqueda
+                  </button>
+                ) : null}
+              </div>
               <div className="filter-bar">
                 {studyModules.map((module) => (
                   <button
@@ -2770,7 +2826,8 @@ function App() {
                 type="button"
                 onClick={() => setIsFlashcardMode(false)}
               >
-                Problemas guiados
+                <span className="practice-mode-icon" aria-hidden="true">📝</span>
+                <span>ENTRENAMIENTO</span>
               </button>
               <button
                 className={`practice-mode-tab ${isFlashcardMode ? 'practice-mode-tab-active' : ''}`}
@@ -2780,49 +2837,55 @@ function App() {
                   setIsFlashcardRevealed(false)
                 }}
               >
-                Fórmula rápida
+                <span className="practice-mode-icon" aria-hidden="true">🗂️</span>
+                <span>FLASHCARDS</span>
               </button>
             </div>
             {!isFlashcardMode ? (
-            <div className="practice-control-row">
-              <div className="practice-control-group">
-                <span className="panel-label">Cola</span>
-                <div className="filter-bar">
-                  {(Object.keys(practiceModeLabels) as PracticeMode[]).map((mode) => (
-                    <button
-                      key={mode}
-                      className={`filter-chip ${practiceMode === mode ? 'filter-chip-active' : ''}`}
-                      type="button"
-                      onClick={() => setPracticeMode(mode)}
-                    >
-                      {practiceModeLabels[mode]}
-                    </button>
-                  ))}
+              <div
+                className={`practice-filter-panel ${isPracticeFiltersOpen ? 'practice-filter-panel-open' : ''}`}
+                aria-hidden={!isPracticeFiltersOpen}
+              >
+                <div className="practice-control-row">
+                  <div className="practice-control-group">
+                    <span className="panel-label">Cola</span>
+                    <div className="filter-bar">
+                      {(Object.keys(practiceModeLabels) as PracticeMode[]).map((mode) => (
+                        <button
+                          key={mode}
+                          className={`filter-chip ${practiceMode === mode ? 'filter-chip-active' : ''}`}
+                          type="button"
+                          onClick={() => setPracticeMode(mode)}
+                        >
+                          {practiceModeLabels[mode]}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="practice-control-group">
+                    <span className="panel-label">Patrón</span>
+                    <div className="filter-bar">
+                      <button
+                        className={`filter-chip ${selectedPracticePattern === 'todo' ? 'filter-chip-active' : ''}`}
+                        type="button"
+                        onClick={() => setSelectedPracticePattern('todo')}
+                      >
+                        Todos
+                      </button>
+                      {practicePatterns.map((pattern) => (
+                        <button
+                          key={pattern}
+                          className={`filter-chip ${selectedPracticePattern === pattern ? 'filter-chip-active' : ''}`}
+                          type="button"
+                          onClick={() => setSelectedPracticePattern(pattern)}
+                        >
+                          {pattern}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="practice-control-group">
-                <span className="panel-label">Patrón</span>
-                <div className="filter-bar">
-                  <button
-                    className={`filter-chip ${selectedPracticePattern === 'todo' ? 'filter-chip-active' : ''}`}
-                    type="button"
-                    onClick={() => setSelectedPracticePattern('todo')}
-                  >
-                    Todos
-                  </button>
-                  {practicePatterns.map((pattern) => (
-                    <button
-                      key={pattern}
-                      className={`filter-chip ${selectedPracticePattern === pattern ? 'filter-chip-active' : ''}`}
-                      type="button"
-                      onClick={() => setSelectedPracticePattern(pattern)}
-                    >
-                      {pattern}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
             ) : null}
           </div>
 
@@ -2834,24 +2897,62 @@ function App() {
                 </span>
                 {activeFlashcardFormula ? (
                   <>
-                    <div className="flashcard-face">
-                      <p className="flashcard-kicker">Adivina la fórmula</p>
-                      <h3>{activeFlashcardFormula.label}</h3>
-                      {isFlashcardRevealed ? (
-                        <div className="flashcard-answer">
-                          <span className="panel-label">Respuesta</span>
-                          <MathFormula latex={activeFlashcardFormula.latex} />
+                    <div className="flashcard-stage" aria-live="polite">
+                      <div className="flashcard-inner">
+                        <div className="flashcard-face flashcard-face-front">
+                          <p className="flashcard-kicker">Adivina la fórmula</p>
+                          <h3>{activeFlashcardFormula.label}</h3>
+                          <p className="flashcard-placeholder">Escríbela mentalmente antes de girar la tarjeta.</p>
                         </div>
-                      ) : (
-                        <p className="flashcard-placeholder">Escríbela mentalmente antes de girar la tarjeta.</p>
-                      )}
+                        <div className="flashcard-face flashcard-face-back">
+                          <p className="flashcard-kicker">Respuesta</p>
+                          <div className="flashcard-answer">
+                            <MathFormula latex={activeFlashcardFormula.latex} />
+                          </div>
+                          <div className="flashcard-variable-legend">
+                            <span className="panel-label">Variables</span>
+                            {activeFlashcardVariableLegend.length > 0 ? (
+                              <ul>
+                                {activeFlashcardVariableLegend.map((variable) => (
+                                  <li key={`${activeFlashcardFormula.label}-${variable.symbol}`}>
+                                    <MathFormula latex={variable.symbol} inline />
+                                    <span>{variable.description}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            ) : (
+                              <p>Repasa qué representa cada magnitud antes de aplicarla.</p>
+                            )}
+                          </div>
+                        </div>
+                      </div>
                     </div>
+                    {isFlashcardRevealed ? (
+                      <div className="flashcard-self-check" aria-label="Autoevaluación de la fórmula">
+                        <button
+                          className="flashcard-self-button flashcard-self-button-miss"
+                          type="button"
+                          onClick={markFlashcardSelfAssessment}
+                        >
+                          <span aria-hidden="true">×</span>
+                          No me la sabía
+                        </button>
+                        <button
+                          className="flashcard-self-button flashcard-self-button-known"
+                          type="button"
+                          onClick={markFlashcardSelfAssessment}
+                        >
+                          <span aria-hidden="true">✓</span>
+                          ¡Me la sabía!
+                        </button>
+                      </div>
+                    ) : null}
                     <div className="practice-actions">
                       <button className="practice-button practice-button-muted" type="button" onClick={() => goToNextFlashcard('prev')}>
                         Anterior
                       </button>
                       <button className="practice-button" type="button" onClick={() => setIsFlashcardRevealed((currentValue) => !currentValue)}>
-                        {isFlashcardRevealed ? 'Ocultar' : 'Girar'}
+                        {isFlashcardRevealed ? 'Volver' : 'Girar'}
                       </button>
                       <button className="practice-button practice-button-muted" type="button" onClick={() => goToNextFlashcard('next')}>
                         Siguiente
